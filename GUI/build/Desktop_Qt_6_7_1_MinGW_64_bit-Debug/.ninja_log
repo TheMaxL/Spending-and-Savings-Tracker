@@ -1,0 +1,9 @@
+# ninja log v5
+1	1161	7379775768058595	GUI_autogen/timestamp	6a7cc5af4fe32a26
+1	1161	7379775768058595	GUI_autogen/mocs_compilation.cpp	6a7cc5af4fe32a26
+1	1161	7379775768058595	C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen/timestamp	6a7cc5af4fe32a26
+1	1161	7379775768058595	C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp	6a7cc5af4fe32a26
+1163	5745	7379775814921827	CMakeFiles/GUI.dir/GUI_autogen/mocs_compilation.cpp.obj	cfe914b062234884
+1168	5858	7379775816061172	CMakeFiles/GUI.dir/main.cpp.obj	6bfcff35ca9aca99
+1175	5930	7379775816780758	CMakeFiles/GUI.dir/mainwindow.cpp.obj	7f9fa449165e6630
+5937	6334	7379775820728507	GUI.exe	608eaecb7f537d61
