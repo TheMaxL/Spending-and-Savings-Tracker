@@ -19,5 +19,5 @@ public:
 
 private:
     Ui::MainWindow *ui;
-}; //S
+}; //Added a comment to test synchronization
 #endif // MAINWINDOW_H
