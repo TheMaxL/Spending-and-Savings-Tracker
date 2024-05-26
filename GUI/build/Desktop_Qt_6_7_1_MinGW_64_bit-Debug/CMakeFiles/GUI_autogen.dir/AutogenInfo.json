@@ -1,16 +1,16 @@
 {
-	"BUILD_DIR" : "C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen",
-	"CMAKE_BINARY_DIR" : "C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug",
-	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug",
-	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI",
+	"BUILD_DIR" : "C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/lennon/Spending-and-Savings-Tracker/GUI",
 	"CMAKE_EXECUTABLE" : "C:/Qt/Tools/CMake_64/bin/cmake.exe",
 	"CMAKE_LIST_FILES" : 
 	[
-		"C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/CMakeLists.txt",
-		"C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake",
+		"C:/Users/lennon/Spending-and-Savings-Tracker/GUI/CMakeLists.txt",
+		"C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/.qtc/package-manager/auto-setup.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeDetermineSystem.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeSystem.cmake.in",
-		"C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/CMakeFiles/3.27.7/CMakeSystem.cmake",
+		"C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/CMakeFiles/3.27.7/CMakeSystem.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeNinjaFindMake.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/Platform/Windows-Initialize.cmake",
@@ -62,7 +62,7 @@
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeFindBinUtils.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/Compiler/GNU-FindBinUtils.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeCXXCompiler.cmake.in",
-		"C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/CMakeFiles/3.27.7/CMakeCXXCompiler.cmake",
+		"C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/CMakeFiles/3.27.7/CMakeCXXCompiler.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake",
@@ -77,7 +77,7 @@
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/Platform/Windows-GNU.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeDetermineRCCompiler.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeRCCompiler.cmake.in",
-		"C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/CMakeFiles/3.27.7/CMakeRCCompiler.cmake",
+		"C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/CMakeFiles/3.27.7/CMakeRCCompiler.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeRCInformation.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/Platform/Windows-windres.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeTestRCCompiler.cmake",
@@ -93,7 +93,7 @@
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeDetermineCompileFeatures.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/Internal/FeatureTesting.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeCXXCompiler.cmake.in",
-		"C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/CMakeFiles/3.27.7/CMakeCXXCompiler.cmake",
+		"C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/CMakeFiles/3.27.7/CMakeCXXCompiler.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/Platform/Windows-GNU-CXX-ABI.cmake",
 		"C:/Qt/6.7.1/mingw_64/lib/cmake/Qt6/Qt6ConfigVersion.cmake",
 		"C:/Qt/6.7.1/mingw_64/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake",
@@ -315,21 +315,21 @@
 		"C:/Qt/6.7.1/mingw_64/lib/cmake/Qt6Widgets/Qt6QModernWindowsStylePluginAdditionalTargetInfo.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/GNUInstallDirs.cmake"
 	],
-	"CMAKE_SOURCE_DIR" : "C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI",
-	"DEP_FILE" : "C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen/deps",
+	"CMAKE_SOURCE_DIR" : "C:/Users/lennon/Spending-and-Savings-Tracker/GUI",
+	"DEP_FILE" : "C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "GUI_autogen/timestamp",
 	"HEADERS" : 
 	[
 		[
-			"C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/mainwindow.h",
+			"C:/Users/lennon/Spending-and-Savings-Tracker/GUI/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
 			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen/include",
-	"MOC_COMPILATION_FILE" : "C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen/include",
+	"MOC_COMPILATION_FILE" : "C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
 		"MINGW_HAS_SECURE_API=1",
@@ -385,26 +385,26 @@
 		"-c",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.27/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 2,
-	"PARSE_CACHE_FILE" : "C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/CMakeFiles/GUI_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE" : "C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/CMakeFiles/GUI_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "C:/Qt/6.7.1/mingw_64/./bin/moc.exe",
 	"QT_UIC_EXECUTABLE" : "C:/Qt/6.7.1/mingw_64/./bin/uic.exe",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 7,
-	"SETTINGS_FILE" : "C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/CMakeFiles/GUI_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/CMakeFiles/GUI_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
 		[
-			"C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/main.cpp",
+			"C:/Users/lennon/Spending-and-Savings-Tracker/GUI/main.cpp",
 			"MU",
 			null
 		],
 		[
-			"C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/mainwindow.cpp",
+			"C:/Users/lennon/Spending-and-Savings-Tracker/GUI/mainwindow.cpp",
 			"MU",
 			null
 		]

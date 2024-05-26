@@ -576,13 +576,13 @@ GUI_autogen/timestamp: \
   C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/time.h \
   C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h \
-  C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/CMakeLists.txt \
+  C:/Users/lennon/Spending-and-Savings-Tracker/GUI/CMakeLists.txt \
   .qtc/package-manager/auto-setup.cmake \
   CMakeFiles/3.27.7/CMakeCXXCompiler.cmake \
   CMakeFiles/3.27.7/CMakeRCCompiler.cmake \
   CMakeFiles/3.27.7/CMakeSystem.cmake \
   GUI_autogen/moc_predefs.h \
-  C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/main.cpp \
-  C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/mainwindow.cpp \
-  C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/mainwindow.h \
-  C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/mainwindow.ui
+  C:/Users/lennon/Spending-and-Savings-Tracker/GUI/main.cpp \
+  C:/Users/lennon/Spending-and-Savings-Tracker/GUI/mainwindow.cpp \
+  C:/Users/lennon/Spending-and-Savings-Tracker/GUI/mainwindow.h \
+  C:/Users/lennon/Spending-and-Savings-Tracker/GUI/mainwindow.ui

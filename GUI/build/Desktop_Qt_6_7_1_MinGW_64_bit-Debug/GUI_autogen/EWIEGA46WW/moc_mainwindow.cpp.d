@@ -1,5 +1,5 @@
-C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen/EWIEGA46WW/moc_mainwindow.cpp: C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/mainwindow.h \
-  C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen/moc_predefs.h \
+C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen/EWIEGA46WW/moc_mainwindow.cpp: C:/Users/lennon/Spending-and-Savings-Tracker/GUI/mainwindow.h \
+  C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/GUI_autogen/moc_predefs.h \
   C:/Qt/6.7.1/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.7.1/mingw_64/include/QtCore/q20memory.h \
   C:/Qt/6.7.1/mingw_64/include/QtCore/q20type_traits.h \

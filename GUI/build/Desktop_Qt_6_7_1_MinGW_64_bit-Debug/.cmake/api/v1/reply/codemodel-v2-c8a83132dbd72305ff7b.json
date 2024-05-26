@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "GUI::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-GUI-Debug-62b714f553e3a7a33dd8.json",
+					"jsonFile" : "target-GUI-Debug-087f216d98be46a9a092.json",
 					"name" : "GUI",
 					"projectIndex" : 0
 				},
@@ -68,8 +68,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug",
-		"source" : "C:/Users/lennon/Spending-and-Savings-Tracker-New/GUI"
+		"build" : "C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug",
+		"source" : "C:/Users/lennon/Spending-and-Savings-Tracker/GUI"
 	},
 	"version" : 
 	{

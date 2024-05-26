@@ -17,7 +17,13 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void onPushButtonClicked();
+    void onDateChanged(const QDate &date);
+
 private:
     Ui::MainWindow *ui;
-}; //Added a comment to test synchronization
+    QMap<QDate, QMap<QString, double>> dataStorage;
+};
+
 #endif // MAINWINDOW_H
