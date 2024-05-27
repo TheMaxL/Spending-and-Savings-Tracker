@@ -76,6 +76,11 @@
       </item>
       <item>
        <property name="text">
+        <string>Budget</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
         <string>Other</string>
        </property>
       </item>

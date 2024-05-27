@@ -21,8 +21,13 @@ void MainWindow::onPushButtonClicked()
     QString category = ui->comboBox->currentText();
     double number = ui->textEdit->toPlainText().toDouble();
 
-    // Store the data in the dataStorage map
-    dataStorage[date][category] = number;
+    if (category == "Budget") {
+        // Store the number as positive
+        dataStorage[date][category] = number;
+    } else {
+        // Store the number as negative
+        dataStorage[date][category] = -number;
+    }
 }
 
 void MainWindow::onDateChanged(const QDate &date)
