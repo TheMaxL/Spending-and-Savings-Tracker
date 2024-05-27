@@ -8,9 +8,9 @@ struct Transaction {
     QDate date;
     QString category;
     double amount;
-    // QString description; (maybe we can let user add a short description of the transaction)
+    QString description;
 
-    Transaction(QDate d, QString c, double a) : date(d), category(c), amount(a) {}
+    Transaction(QDate d, QString c, double a, QString ds) : date(d), category(c), amount(a), description(ds) {}
 };
 
 #endif // TRANSACTION_H

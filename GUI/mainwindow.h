@@ -5,6 +5,7 @@
 #include <QList>
 #include <QDate>
 #include <QString>
+#include <QLabel>
 #include "transaction.h"
 
 QT_BEGIN_NAMESPACE
@@ -23,13 +24,16 @@ public:
 
 private slots:
     void onPushButtonClicked();
-    void onDateChanged(const QDate &date);
     void on_pushButton_2_clicked();
+
 
 private:
     Ui::MainWindow *ui;
-    QMap<QDate, QMap<QString, double>> dataStorage;
     QList<Transaction> transactions;
+    double balance;
+
+    void updateBalance();
+
 };
 
 #endif // MAINWINDOW_H
