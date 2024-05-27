@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "transaction.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -19,25 +21,32 @@ void MainWindow::onPushButtonClicked()
 {
     QDate date = ui->dateEdit->date();
     QString category = ui->comboBox->currentText();
-    double number = ui->textEdit->toPlainText().toDouble();
+    double amount = ui->textEdit->toPlainText().toDouble();
 
-    if (category == "Budget") {
-        // Store the number as positive
-        dataStorage[date][category] = number;
-    } else {
-        // Store the number as negative
-        dataStorage[date][category] = -number;
-    }
+    amount = -amount;
+
+    Transaction newTransaction(date, category, amount);
+    transactions.append(newTransaction);
+
+    qDebug() << "Added transaction:" << "Date:" << date << "Category:" << category << "Amount:" << amount;
 }
 
 void MainWindow::onDateChanged(const QDate &date)
 {
-    // Publish data for the previous date
-    QDate previousDate = ui->dateEdit->date().addDays(-1);
-    QMap<QString, double> dataForPreviousDate = dataStorage[previousDate];
-    // Publish the data (e.g., print to console, send to server, etc.)
-    qDebug() << "Data for" << previousDate << ":";
-    for (auto it = dataForPreviousDate.begin(); it != dataForPreviousDate.end(); ++it) {
-        qDebug() << it.key() << ":" << it.value();
+    for (const Transaction &transaction : transactions) {
+        qDebug() << "Transaction - Date:" << transaction.date << "Category:" << transaction.category << "Amount:" << transaction.amount;
     }
 }
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    QDate date = ui->dateEdit_2->date();
+    QString category = ui->comboBox_2->currentText();
+    double amount = ui->textEdit_2->toPlainText().toDouble();
+
+    Transaction newTransaction(date, category, amount);
+    transactions.append(newTransaction);
+
+    qDebug() << "Added transaction:" << "Date:" << date << "Category:" << category << "Amount:" << amount;
+}
+
