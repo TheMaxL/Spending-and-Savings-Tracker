@@ -17,8 +17,8 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>50</y>
+      <x>270</x>
+      <y>70</y>
       <width>531</width>
       <height>311</height>
      </rect>
@@ -30,7 +30,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -133,16 +133,23 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="dateTime">
        <datetime>
-        <hour>0</hour>
+        <hour>16</hour>
         <minute>0</minute>
         <second>0</second>
         <year>2024</year>
-        <month>1</month>
+        <month>5</month>
         <day>1</day>
        </datetime>
       </property>
       <property name="calendarPopup">
        <bool>true</bool>
+      </property>
+      <property name="date">
+       <date>
+        <year>2024</year>
+        <month>5</month>
+        <day>1</day>
+       </date>
       </property>
      </widget>
      <widget class="QLabel" name="label">
@@ -292,11 +299,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="dateTime">
        <datetime>
-        <hour>16</hour>
+        <hour>8</hour>
         <minute>0</minute>
         <second>0</second>
         <year>2024</year>
-        <month>1</month>
+        <month>5</month>
         <day>1</day>
        </datetime>
       </property>
@@ -306,7 +313,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="date">
        <date>
         <year>2024</year>
-        <month>1</month>
+        <month>5</month>
         <day>1</day>
        </date>
       </property>
@@ -354,7 +361,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>10</y>
+        <y>50</y>
         <width>63</width>
         <height>20</height>
        </rect>
@@ -367,7 +374,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>190</x>
-        <y>10</y>
+        <y>50</y>
         <width>63</width>
         <height>20</height>
        </rect>
@@ -379,10 +386,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>370</x>
-        <y>10</y>
+        <x>360</x>
+        <y>50</y>
         <width>63</width>
-        <height>20</height>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
@@ -393,7 +400,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>40</y>
+        <y>80</y>
         <width>141</width>
         <height>20</height>
        </rect>
@@ -409,7 +416,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="geometry">
        <rect>
         <x>190</x>
-        <y>40</y>
+        <y>80</y>
         <width>151</width>
         <height>20</height>
        </rect>
@@ -421,8 +428,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
-        <x>370</x>
-        <y>40</y>
+        <x>360</x>
+        <y>80</y>
         <width>151</width>
         <height>20</height>
        </rect>
@@ -434,14 +441,14 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <widget class="QTabWidget" name="tabWidget_2">
       <property name="geometry">
        <rect>
-        <x>-10</x>
-        <y>80</y>
-        <width>541</width>
+        <x>0</x>
+        <y>110</y>
+        <width>531</width>
         <height>211</height>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_5">
        <attribute name="title">
@@ -506,6 +513,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
        </widget>
       </widget>
+     </widget>
+     <widget class="QComboBox" name="comboBox_3">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>10</y>
+        <width>81</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Year</string>
+      </property>
      </widget>
     </widget>
    </widget>

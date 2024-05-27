@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "transaction.h"
+#include "linkedlist.h"
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -13,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     updateBalance();
 
     connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::onPushButtonClicked);
+    connect(ui->pushButton_2, &QPushButton::clicked, this, &MainWindow::onPushButton_2Clicked);
 }
 
 MainWindow::~MainWindow()
@@ -26,28 +28,27 @@ void MainWindow::onPushButtonClicked()
     QString category = ui->comboBox->currentText();
     double amount = ui->textEdit->toPlainText().toDouble();
     QString description = ui->plainTextEdit->toPlainText();
+    QString type = "expense";
 
-    amount = -amount;
-
-    Transaction newTransaction(date, category, amount, description);
+    Transaction newTransaction(date, category, amount, description, type);
     transactions.append(newTransaction);
 
-    balance += amount;
+    balance -= amount;
     updateBalance();
-    ui->textEdit_2->clear();
-    ui->plainTextEdit_2->clear();
+    ui->textEdit->clear();
+    ui->plainTextEdit->clear();
 
-    qDebug() << "Added transaction:" << "Date:" << date << "Category:" << category << "Amount:" << amount << "Description:" << description;
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::onPushButton_2Clicked()
 {
     QDate date = ui->dateEdit_2->date();
     QString category = ui->comboBox_2->currentText();
     double amount = ui->textEdit_2->toPlainText().toDouble();
     QString description = ui->plainTextEdit_2->toPlainText();
+    QString type = "income";
 
-    Transaction newTransaction(date, category, amount, description);
+    Transaction newTransaction(date, category, amount, description, type);
     transactions.append(newTransaction);
 
     balance += amount;
@@ -55,11 +56,15 @@ void MainWindow::on_pushButton_2_clicked()
     ui->textEdit_2->clear();
     ui->plainTextEdit_2->clear();
 
-    qDebug() << "Added transaction:" << "Date:" << date << "Category:" << category << "Amount:" << amount << "Description:" << description;
 }
 
 void MainWindow::updateBalance()
 {
     ui->label->setText("Balance: ₱" + QString::number(balance, 'f', 2));
     ui->label_3->setText("Balance: ₱" + QString::number(balance, 'f', 2));
+    ui->label_10->setText("₱" + QString::number(balance, 'f', 2));
+}
+void MainWindow::updateIncome()
+{
+
 }

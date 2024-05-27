@@ -6,7 +6,9 @@
 #include <QDate>
 #include <QString>
 #include <QLabel>
+
 #include "transaction.h"
+#include "linkedlist.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,7 +26,7 @@ public:
 
 private slots:
     void onPushButtonClicked();
-    void on_pushButton_2_clicked();
+    void onPushButton_2Clicked();
 
 
 private:
@@ -33,6 +35,8 @@ private:
     double balance;
 
     void updateBalance();
+    void updateIncome();
+    void updateExpense();
 
 };
 
