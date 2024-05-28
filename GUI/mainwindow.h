@@ -38,6 +38,7 @@ private:
     Ui::MainWindow *ui;
     LinkedList<Transaction> transactions; // Use linked list instead of QList
     double balance, totalIncome, totalExpense, amount, budget;
+    int year;
 
     void updateBalance();
     void updateIncome();

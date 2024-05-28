@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->yearlyBalanceLabel->setStyleSheet("color: blue;");
     ui->clearExpenses->setStyleSheet("color: red;");
     ui->clearIncome->setStyleSheet("color: red;");
+    year = 2024;
 
     loadTransactionsFromFile("transactions.txt");
 }
@@ -132,12 +133,13 @@ void MainWindow::calculateYearlyIncomeAndExpense(int year)
 
 void MainWindow::on_tabWidget_tabBarClicked(int index)
 {
-    calculateYearlyIncomeAndExpense(2024);
+    calculateYearlyIncomeAndExpense(year);
 }
 
 
 void MainWindow::on_spinBoxYear_valueChanged(int arg1)
 {
+    year = arg1;
     calculateYearlyIncomeAndExpense(arg1);
 }
 
@@ -250,12 +252,9 @@ void MainWindow::on_clearIncome_clicked()
     if (reply == QMessageBox::Yes) {
         // User confirmed to clear expenses data
         totalIncome = 0.0;
-        // You may want to clear transactions as well if needed: transactions.clear();
-        // Update UI after clearing expenses
-        updateExpense();
+        updateIncome();
         QMessageBox::information(this, "Data Cleared", "Income data cleared successfully.");
     } else {
-        // User chose not to clear expenses data
         QMessageBox::information(this, "Operation Cancelled", "Income data was not cleared.");
     }
 }
