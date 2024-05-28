@@ -21,19 +21,30 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void saveTransactionsToFile(const QString& filename);
+    void loadTransactionsFromFile(const QString& filename);
+    void resetData(const QString& filename);
 
 private slots:
     void onPushButtonClicked();
     void onPushButton_2Clicked();
+    void on_tabWidget_tabBarClicked(int index);
+    void on_spinBoxYear_valueChanged(int arg1);
+    void on_clearExpenses_clicked();
+    void on_clearIncome_clicked();
+    void on_resetButton_clicked();
 
 private:
     Ui::MainWindow *ui;
     LinkedList<Transaction> transactions; // Use linked list instead of QList
-    double balance;
+    double balance, totalIncome, totalExpense, amount, budget;
 
     void updateBalance();
     void updateIncome();
     void updateExpense();
+    void updateBudget();
+    void calculateYearlyIncomeAndExpense(int year);
+
 };
 
 #endif // MAINWINDOW_H
