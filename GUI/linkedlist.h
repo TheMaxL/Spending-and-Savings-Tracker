@@ -1,52 +1,45 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
-#include "transaction.h"
-
-struct Node {
-    Transaction transaction;
+template <typename T>
+class Node {
+public:
+    T data;
     Node* next;
 
-    Node(const Transaction& t) : transaction(t), next(nullptr) {}
+    Node(T data) : data(data), next(nullptr) {}
 };
 
+template <typename T>
 class LinkedList {
 public:
-    LinkedList() : head(nullptr), tail(nullptr) {}
+    Node<T>* head;
+
+    LinkedList() : head(nullptr) {}
 
     ~LinkedList() {
-        clear();
+        Node<T>* current = head;
+        while (current) {
+            Node<T>* nextNode = current->next;
+            delete current;
+            current = nextNode;
+        }
     }
 
-    void append(const Transaction& transaction) {
-        Node* newNode = new Node(transaction);
+    void append(const T& data) {
+        Node<T>* newNode = new Node<T>(data);
         if (!head) {
             head = newNode;
-            tail = newNode;
         } else {
-            tail->next = newNode;
-            tail = newNode;
+            Node<T>* current = head;
+            while (current->next) {
+                current = current->next;
+            }
+            current->next = newNode;
         }
     }
 
-    void clear() {
-        Node* current = head;
-        while (current) {
-            Node* next = current->next;
-            delete current;
-            current = next;
-        }
-        head = nullptr;
-        tail = nullptr;
-    }
-
-    Node* getHead() const {
-        return head;
-    }
-
-private:
-    Node* head;
-    Node* tail;
+    // Additional methods like remove, find, etc., can be added here
 };
 
 #endif // LINKEDLIST_H

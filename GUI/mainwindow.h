@@ -2,11 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QList>
 #include <QDate>
 #include <QString>
 #include <QLabel>
-
 #include "transaction.h"
 #include "linkedlist.h"
 
@@ -28,16 +26,16 @@ private slots:
     void onPushButtonClicked();
     void onPushButton_2Clicked();
 
-
 private:
     Ui::MainWindow *ui;
-    QList<Transaction> transactions;
+    LinkedList<Transaction> transactions; // Use linked list instead of QList
     double balance;
 
     void updateBalance();
     void updateIncome();
     void updateExpense();
-
 };
 
 #endif // MAINWINDOW_H
+
+

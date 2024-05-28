@@ -30,7 +30,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -133,7 +133,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="dateTime">
        <datetime>
-        <hour>16</hour>
+        <hour>8</hour>
         <minute>0</minute>
         <second>0</second>
         <year>2024</year>
@@ -191,6 +191,19 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <string>Description...</string>
       </property>
      </widget>
+     <widget class="QLabel" name="labelTotalExpense">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>10</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Total Expanse:</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -232,7 +245,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>211</width>
+        <width>191</width>
         <height>20</height>
        </rect>
       </property>
@@ -299,7 +312,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
       </property>
       <property name="dateTime">
        <datetime>
-        <hour>8</hour>
+        <hour>0</hour>
         <minute>0</minute>
         <second>0</second>
         <year>2024</year>
@@ -331,27 +344,24 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <string>Description...</string>
       </property>
      </widget>
+     <widget class="QLabel" name="labelTotalIncome">
+      <property name="geometry">
+       <rect>
+        <x>360</x>
+        <y>10</y>
+        <width>121</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Total Income:</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
       <string>Manage Budget</string>
      </attribute>
-     <widget class="QLabel" name="label_14">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>110</y>
-        <width>521</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Here, they can edit their spending goals, budget, balance, etc</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-      </property>
-     </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -401,7 +411,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <rect>
         <x>20</x>
         <y>80</y>
-        <width>141</width>
+        <width>41</width>
         <height>20</height>
        </rect>
       </property>
@@ -417,7 +427,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <rect>
         <x>190</x>
         <y>80</y>
-        <width>151</width>
+        <width>41</width>
         <height>20</height>
        </rect>
       </property>
@@ -430,7 +440,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <rect>
         <x>360</x>
         <y>80</y>
-        <width>151</width>
+        <width>41</width>
         <height>20</height>
        </rect>
       </property>
@@ -448,7 +458,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_5">
        <attribute name="title">
@@ -526,6 +536,55 @@ li.checked::marker { content: &quot;\2612&quot;; }
       <property name="placeholderText">
        <string>Year</string>
       </property>
+      <item>
+       <property name="text">
+        <string>Month</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Year</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>80</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>80</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>80</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
      </widget>
     </widget>
    </widget>
@@ -536,7 +595,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <x>0</x>
      <y>0</y>
      <width>1062</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

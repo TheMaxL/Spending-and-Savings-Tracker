@@ -35,9 +35,9 @@ void MainWindow::onPushButtonClicked()
 
     balance -= amount;
     updateBalance();
+    updateExpense(); // Update total expenses
     ui->textEdit->clear();
     ui->plainTextEdit->clear();
-
 }
 
 void MainWindow::onPushButton_2Clicked()
@@ -53,9 +53,9 @@ void MainWindow::onPushButton_2Clicked()
 
     balance += amount;
     updateBalance();
+    updateIncome(); // Update total income
     ui->textEdit_2->clear();
     ui->plainTextEdit_2->clear();
-
 }
 
 void MainWindow::updateBalance()
@@ -64,7 +64,38 @@ void MainWindow::updateBalance()
     ui->label_3->setText("Balance: ₱" + QString::number(balance, 'f', 2));
     ui->label_10->setText("₱" + QString::number(balance, 'f', 2));
 }
+
 void MainWindow::updateIncome()
 {
+    double totalIncome = 0.0;
 
+    // Iterate through all transactions and sum up the income
+    Node<Transaction>* current = transactions.head;
+    while (current) {
+        if (current->data.getType() == "income") {
+            totalIncome += current->data.getAmount();
+        }
+        current = current->next;
+    }
+
+    // Update the label (or any other UI element) to display total income
+    ui->labelTotalIncome->setText("Total Income: ₱" + QString::number(totalIncome, 'f', 2));
 }
+
+void MainWindow::updateExpense()
+{
+    double totalExpense = 0.0;
+
+    // Iterate through all transactions and sum up the expenses
+    Node<Transaction>* current = transactions.head;
+    while (current) {
+        if (current->data.getType() == "expense") {
+            totalExpense += current->data.getAmount();
+        }
+        current = current->next;
+    }
+
+    // Update the label (or any other UI element) to display total expenses
+    ui->labelTotalExpense->setText("Total Expenses: ₱" + QString::number(totalExpense, 'f', 2));
+}
+
