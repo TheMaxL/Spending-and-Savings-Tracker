@@ -6,7 +6,12 @@
 #include <QTextStream>
 #include <QIODevice>
 #include <QMessageBox>
+#include <QtCharts/QChartView>
+#include <QtCharts/QPieSeries>
+#include <QtCharts/QPieSlice>
+#include <QtCharts/QChart>
 
+QT_USE_NAMESPACE
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -295,3 +300,17 @@ void MainWindow::resetData(const QString& filename)
     // Save the reset values to the file
     saveTransactionsToFile(filename);
 }
+
+void MainWindow::on_monthComboBox_currentIndexChanged(int index)
+{
+    createPieChart();
+}
+
+
+void MainWindow::createPieChart()
+{
+    // will add graph of expenses and income
+}
+
+
+

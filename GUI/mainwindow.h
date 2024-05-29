@@ -33,6 +33,7 @@ private slots:
     void on_clearExpenses_clicked();
     void on_clearIncome_clicked();
     void on_resetButton_clicked();
+    void on_monthComboBox_currentIndexChanged(int index);
 
 private:
     Ui::MainWindow *ui;
@@ -45,6 +46,7 @@ private:
     void updateExpense();
     void updateBudget();
     void calculateYearlyIncomeAndExpense(int year);
+    void createPieChart();
 
 };
 

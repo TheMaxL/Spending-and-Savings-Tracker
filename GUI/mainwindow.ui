@@ -24,11 +24,11 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
-        <string>Expenses</string>
+        <string>Expense</string>
        </attribute>
        <widget class="QTextEdit" name="textEdit">
         <property name="geometry">
@@ -127,17 +127,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="dateTime">
          <datetime>
-          <hour>8</hour>
+          <hour>16</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2024</year>
-          <month>5</month>
+          <month>6</month>
           <day>1</day>
          </datetime>
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>23</hour>
+          <hour>7</hour>
           <minute>59</minute>
           <second>59</second>
           <year>2034</year>
@@ -147,12 +147,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="minimumDateTime">
          <datetime>
-          <hour>8</hour>
+          <hour>16</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2013</year>
           <month>12</month>
-          <day>31</day>
+          <day>30</day>
          </datetime>
         </property>
         <property name="calendarPopup">
@@ -161,7 +161,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <property name="date">
          <date>
           <year>2024</year>
-          <month>5</month>
+          <month>6</month>
           <day>1</day>
          </date>
         </property>
@@ -339,17 +339,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="dateTime">
          <datetime>
-          <hour>0</hour>
+          <hour>8</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2024</year>
-          <month>5</month>
+          <month>6</month>
           <day>1</day>
          </datetime>
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>23</hour>
+          <hour>7</hour>
           <minute>59</minute>
           <second>59</second>
           <year>2034</year>
@@ -359,12 +359,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="minimumDateTime">
          <datetime>
-          <hour>8</hour>
+          <hour>16</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2013</year>
           <month>12</month>
-          <day>31</day>
+          <day>30</day>
          </datetime>
         </property>
         <property name="calendarPopup">
@@ -373,7 +373,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         <property name="date">
          <date>
           <year>2024</year>
-          <month>5</month>
+          <month>6</month>
           <day>1</day>
          </date>
         </property>
@@ -451,8 +451,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <widget class="QPushButton" name="resetButton">
         <property name="geometry">
          <rect>
-          <x>170</x>
-          <y>340</y>
+          <x>150</x>
+          <y>320</y>
           <width>93</width>
           <height>31</height>
          </rect>
@@ -608,20 +608,126 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <attribute name="title">
           <string>Summary</string>
          </attribute>
-         <widget class="QLabel" name="label_13">
+         <widget class="QWidget" name="PieChartExpense" native="true">
           <property name="geometry">
            <rect>
-            <x>40</x>
-            <y>70</y>
-            <width>491</width>
+            <x>20</x>
+            <y>50</y>
+            <width>171</width>
+            <height>111</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="monthComboBox">
+          <property name="geometry">
+           <rect>
+            <x>200</x>
+            <y>10</y>
+            <width>80</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="currentText">
+           <string>Jan</string>
+          </property>
+          <property name="placeholderText">
+           <string>Month</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>Jan</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Feb</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Mar</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Apr</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>May</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Jun</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Jul</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Aug</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Sep</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Oct</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Nov</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Dec</string>
+           </property>
+          </item>
+         </widget>
+         <widget class="QWidget" name="PieChartIncome" native="true">
+          <property name="geometry">
+           <rect>
+            <x>300</x>
+            <y>50</y>
+            <width>171</width>
+            <height>111</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_3">
+          <property name="geometry">
+           <rect>
+            <x>70</x>
+            <y>20</y>
+            <width>63</width>
             <height>20</height>
            </rect>
           </property>
           <property name="text">
-           <string>Here will be the graphs and spending habits, summary?</string>
+           <string>Expense</string>
           </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </widget>
+         <widget class="QLabel" name="label_4">
+          <property name="geometry">
+           <rect>
+            <x>360</x>
+            <y>20</y>
+            <width>63</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Income</string>
           </property>
          </widget>
         </widget>
