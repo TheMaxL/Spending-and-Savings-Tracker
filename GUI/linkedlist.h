@@ -39,6 +39,16 @@ public:
         }
     }
 
+    void clear() {
+        Node<T>* current = head;
+        while (current != nullptr) {
+            Node<T>* next = current->next;
+            delete current;
+            current = next;
+        }
+        head = nullptr;
+    }
+
     // Additional methods like remove, find, etc., can be added here
 };
 

@@ -272,5 +272,26 @@ void MainWindow::on_resetButton_clicked()
 
 void MainWindow::resetData(const QString& filename)
 {
-    // still finding way to reset data;
+    QFile file(filename);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate)) {
+        QMessageBox::critical(this, "Error", "Could not open file for writing!");
+        return;
+    }
+    file.resize(0); // Truncate the file
+    file.close();
+
+    // Reset the in-memory data
+    balance = 0.0;
+    totalIncome = 0.0;
+    totalExpense = 0.0;
+    transactions.clear(); // Clear the in-memory transactions list
+
+    // Update the UI to reflect the reset state
+    updateBalance();
+    updateIncome();
+    updateExpense();
+    //calculateYearlyIncomeAndExpense(ui->spinBoxYear->value()); // Update yearly calculations
+
+    // Save the reset values to the file
+    saveTransactionsToFile(filename);
 }
