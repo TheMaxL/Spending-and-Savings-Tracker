@@ -24,7 +24,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -127,7 +127,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="dateTime">
          <datetime>
-          <hour>8</hour>
+          <hour>16</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2024</year>
@@ -137,7 +137,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>23</hour>
+          <hour>7</hour>
           <minute>59</minute>
           <second>59</second>
           <year>2034</year>
@@ -147,12 +147,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="minimumDateTime">
          <datetime>
-          <hour>8</hour>
+          <hour>16</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2013</year>
           <month>12</month>
-          <day>29</day>
+          <day>28</day>
          </datetime>
         </property>
         <property name="calendarPopup">
@@ -334,7 +334,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="dateTime">
          <datetime>
-          <hour>0</hour>
+          <hour>8</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2024</year>
@@ -344,7 +344,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>23</hour>
+          <hour>7</hour>
           <minute>59</minute>
           <second>59</second>
           <year>2034</year>
@@ -354,12 +354,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="minimumDateTime">
          <datetime>
-          <hour>8</hour>
+          <hour>16</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2013</year>
           <month>12</month>
-          <day>29</day>
+          <day>28</day>
          </datetime>
         </property>
         <property name="calendarPopup">
@@ -1054,6 +1054,142 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
        </widget>
       </widget>
+      <widget class="QWidget" name="tab_8">
+       <attribute name="title">
+        <string>Stats</string>
+       </attribute>
+       <widget class="QDateEdit" name="dateEdit_7">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>20</y>
+          <width>110</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="date">
+         <date>
+          <year>2024</year>
+          <month>6</month>
+          <day>1</day>
+         </date>
+        </property>
+       </widget>
+       <widget class="QDateEdit" name="dateEdit_8">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>60</y>
+          <width>110</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="date">
+         <date>
+          <year>2024</year>
+          <month>6</month>
+          <day>1</day>
+         </date>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBox_7">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>100</y>
+          <width>191</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Food</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Bills</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Comfort</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Hygiene</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Medicine</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Transportation</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Other</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QPushButton" name="pushButton_7">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>100</y>
+          <width>75</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Confirm</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_19">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>10</y>
+          <width>211</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Mean Balance: 0.00</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_20">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>40</y>
+          <width>211</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Variance: 0.00</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_21">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>70</y>
+          <width>211</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Standard deviation: 0.00</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -1064,7 +1200,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <x>0</x>
      <y>0</y>
      <width>1062</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

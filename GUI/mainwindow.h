@@ -45,6 +45,7 @@ private slots:
     void on_spinBoxDay_valueChanged(int arg1);
     void on_tabWidget_2_currentChanged(int index);
     void on_tabWidget_currentChanged(int index);
+    void on_pushButton_7_clicked();
 
 private:
     Ui::MainWindow *ui;

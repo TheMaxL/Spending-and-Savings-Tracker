@@ -10,6 +10,9 @@
 #include <QtCharts/QPieSeries>
 #include <QtCharts/QPieSlice>
 #include <QtCharts/QChart>
+#include <QDate>
+#include <QDebug>
+#include <cmath>
 
 
 QT_USE_NAMESPACE
@@ -25,7 +28,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::onPushButtonClicked);
     connect(ui->pushButton_2, &QPushButton::clicked, this, &MainWindow::onPushButton_2Clicked);
     connect(ui->monthComboBox_3, QOverload<int>::of(&QComboBox::currentIndexChanged),
-            this, &MainWindow::updateDaySpinBoxRange);
+    this, &MainWindow::updateDaySpinBoxRange);
+    connect(ui->pushButton_7, &QPushButton::clicked, this, &MainWindow::on_pushButton_7_clicked);
+
 
     ui->resetButton->setStyleSheet("color: red;");
     ui->clearExpenses->setStyleSheet("color: red;");
@@ -707,7 +712,62 @@ void MainWindow::printDaily()
         current = current->next;
     }
 }
+// Function to calculate mean
+double calculateMean(const QList<double>& data) {
+    double sum = 0.0;
+    for(double value : data) {
+        sum += value;
+    }
+    return (data.size() > 0) ? sum / data.size() : 0.0;
+}
 
+// Function to calculate variance
+double calculateVariance(const QList<double>& data, double mean) {
+    double sum = 0.0;
+    for(double value : data) {
+        sum += (value - mean) * (value - mean);
+    }
+    return (data.size() > 0) ? sum / data.size() : 0.0;
+}
+
+// Function to calculate standard deviation
+double calculateStandardDeviation(double variance) {
+    return std::sqrt(variance);
+}
+
+void MainWindow::on_pushButton_7_clicked() {
+    QDate startDate = ui->dateEdit_7->date();
+    QDate endDate = ui->dateEdit_8->date();
+    QString category = ui->comboBox_7->currentText();
+
+    if (!startDate.isValid() || !endDate.isValid() || startDate > endDate) {
+        QMessageBox::warning(this, "Invalid Date Range", "Please select a valid date range.");
+        return;
+    }
+
+    QList<double> balances;
+    Node<Transaction>* current = transactions.head;
+    while (current) {
+        QDate transactionDate = current->data.getDate();
+        if (transactionDate >= startDate && transactionDate <= endDate && current->data.getCategory() == category) {
+            balances.append(current->data.getAmount());
+        }
+        current = current->next;
+    }
+
+    if (balances.isEmpty()) {
+        QMessageBox::information(this, "No Data", "No transactions found in the selected date range for the chosen category.");
+        return;
+    }
+
+    double mean = calculateMean(balances);
+    double variance = calculateVariance(balances, mean);
+    double stdDev = calculateStandardDeviation(variance);
+
+    ui->label_19->setText("Mean Balance: ₱" + QString::number(mean, 'f', 2));
+    ui->label_20->setText("Variance: ₱" + QString::number(variance, 'f', 2));
+    ui->label_21->setText("Standard Deviation: ₱" + QString::number(stdDev, 'f', 2));
+}
 void MainWindow::updateDaily()
 {
     double dailyExpense = 0.0, dailyIncome = 0.0, dailyBalance = 0.0;
