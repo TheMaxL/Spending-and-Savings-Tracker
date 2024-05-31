@@ -425,8 +425,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <widget class="QPushButton" name="resetButton">
         <property name="geometry">
          <rect>
-          <x>150</x>
-          <y>320</y>
+          <x>200</x>
+          <y>330</y>
           <width>93</width>
           <height>31</height>
          </rect>
@@ -560,7 +560,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
          </rect>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab_5">
          <attribute name="title">
@@ -569,17 +569,193 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <widget class="QLabel" name="label_11">
           <property name="geometry">
            <rect>
-            <x>60</x>
-            <y>30</y>
-            <width>401</width>
-            <height>101</height>
+            <x>30</x>
+            <y>40</y>
+            <width>63</width>
+            <height>20</height>
            </rect>
           </property>
           <property name="text">
-           <string>Insert Transactions within the day? let them choose date</string>
+           <string>Income</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="dailyIncomeLabel">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>60</y>
+            <width>131</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>₱0.00</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_12">
+          <property name="geometry">
+           <rect>
+            <x>210</x>
+            <y>40</y>
+            <width>63</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Expense</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_13">
+          <property name="geometry">
+           <rect>
+            <x>400</x>
+            <y>40</y>
+            <width>63</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Balance</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="dailyExpenseLabel">
+          <property name="geometry">
+           <rect>
+            <x>210</x>
+            <y>60</y>
+            <width>131</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>₱0.00</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="dailyBalanceLabel">
+          <property name="geometry">
+           <rect>
+            <x>400</x>
+            <y>60</y>
+            <width>121</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>₱0.00</string>
+          </property>
+         </widget>
+         <widget class="QListWidget" name="dailyList">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>100</y>
+            <width>441</width>
+            <height>231</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="monthComboBox_3">
+          <property name="geometry">
+           <rect>
+            <x>140</x>
+            <y>10</y>
+            <width>80</width>
+            <height>26</height>
+           </rect>
+          </property>
+          <property name="currentText">
+           <string/>
+          </property>
+          <property name="placeholderText">
+           <string>Month</string>
+          </property>
+          <item>
+           <property name="text">
+            <string>Jan</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Feb</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Mar</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Apr</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>May</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Jun</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Jul</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Aug</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Sep</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Oct</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Nov</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Dec</string>
+           </property>
+          </item>
+         </widget>
+         <widget class="QSpinBox" name="spinBoxDay">
+          <property name="geometry">
+           <rect>
+            <x>230</x>
+            <y>10</y>
+            <width>111</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="minimum">
+           <number>0</number>
+          </property>
+          <property name="maximum">
+           <number>0</number>
+          </property>
+          <property name="singleStep">
+           <number>0</number>
+          </property>
+          <property name="value">
+           <number>0</number>
           </property>
          </widget>
         </widget>

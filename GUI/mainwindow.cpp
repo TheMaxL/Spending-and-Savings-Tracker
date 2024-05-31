@@ -23,12 +23,17 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::onPushButtonClicked);
     connect(ui->pushButton_2, &QPushButton::clicked, this, &MainWindow::onPushButton_2Clicked);
+    connect(ui->monthComboBox_3, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &MainWindow::updateDaySpinBoxRange);
+
     ui->resetButton->setStyleSheet("color: red;");
     ui->clearExpenses->setStyleSheet("color: red;");
     ui->clearIncome->setStyleSheet("color: red;");
+    updateDaySpinBoxRange(0);
     year = 2024;
     month = 1;
     monthPie = 1;
+    monthDaily = 1, day = 1;
 
     loadTransactionsFromFile("transactions.txt");
 }
@@ -403,7 +408,8 @@ void MainWindow::on_monthComboBox_2_currentIndexChanged(int index)
     updateMonthly();
 }
 
-void MainWindow::updateMonthly() {
+void MainWindow::updateMonthly()
+{
     double monthlyExpense = 0.0, monthlyIncome = 0.0, monthlyBalance = 0.0;
     Node<Transaction>* current = transactions.head;
     while (current) {
@@ -427,4 +433,82 @@ void MainWindow::updateMonthly() {
     ui->monthlyBalanceLabel->setStyleSheet("color: blue;");
 }
 
+void MainWindow::updateDaySpinBoxRange(int index)
+{
+    // Get the selected month from the index and calculate the number of days
+    int selectedMonth = index + 1;  // Assuming monthComboBox_3 index starts from 0
+    int daysInMonth = QDate(year, selectedMonth, 1).daysInMonth();
+
+    // Set the range of the day spin box based on the number of days
+    ui->spinBoxDay->setRange(1, daysInMonth);
+}
+
+
+
+void MainWindow::printDaily()
+{
+    ui->dailyList->clear();  // Clear the list widget before adding new items
+
+    Node<Transaction>* current = transactions.head;
+    while (current) {
+        QDate transactionDate = current->data.getDate();
+        if (transactionDate.month() == monthDaily && transactionDate.day() == day && transactionDate.year() == year) {
+            QString transactionInfo = QString("%1 - %2: ₱%3")
+                                          .arg(transactionDate.toString("yyyy-MM-dd"))
+                                          .arg(current->data.getCategory())
+                                          .arg(current->data.getAmount());
+
+            if (!current->data.getDescription().isEmpty()) {
+                transactionInfo.append("    (" + current->data.getDescription() + ")");
+            }
+
+
+            QListWidgetItem *item = new QListWidgetItem(transactionInfo);
+            ui->dailyList->addItem(item);
+        }
+        current = current->next;
+    }
+    updateDaily();
+}
+
+void MainWindow::updateDaily()
+{
+    double dailyExpense = 0.0, dailyIncome = 0.0, dailyBalance = 0.0;
+    Node<Transaction>* current = transactions.head;
+    while (current) {
+        QDate currentDate = current->data.getDate();
+        if (currentDate.year() == year && currentDate.month() == monthDaily && currentDate.day() == day) {
+            if (current->data.getType() == "income") {
+                dailyIncome += current->data.getAmount();
+                dailyBalance += current->data.getAmount();
+            } else if (current->data.getType() == "expense") {
+                dailyExpense += current->data.getAmount();
+                dailyBalance -= current->data.getAmount();
+            }
+        }
+        current = current->next;
+    }
+    ui->dailyIncomeLabel->setText("₱" + QString::number(dailyIncome, 'f', 2));
+    ui->dailyExpenseLabel->setText("₱" + QString::number(dailyExpense, 'f', 2));
+    ui->dailyBalanceLabel->setText("₱" + QString::number(dailyBalance, 'f', 2));
+    ui->dailyExpenseLabel->setStyleSheet("color: red;");
+    ui->dailyIncomeLabel->setStyleSheet("color: green;");
+    ui->dailyBalanceLabel->setStyleSheet("color: blue;");
+}
+
+
+void MainWindow::on_monthComboBox_3_currentIndexChanged(int index)
+{
+    monthDaily = index + 1;
+    updateDaily();
+    printDaily();
+}
+
+
+void MainWindow::on_spinBoxDay_valueChanged(int arg1)
+{
+    day = arg1;
+    updateDaily();
+    printDaily();
+}
 
