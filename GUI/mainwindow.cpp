@@ -272,6 +272,9 @@ void MainWindow::on_resetButton_clicked()
                                   QMessageBox::Yes | QMessageBox::No);
     if (clear == QMessageBox::Yes) {
         resetData("transactions.txt");
+        dailyBalances.clear();
+        updateAverageBalance();
+        ui->label_14->setText("Daily Balance: 0.00");
     }
 }
 
@@ -298,8 +301,62 @@ void MainWindow::resetData(const QString& filename)
     //calculateYearlyIncomeAndExpense(ui->spinBoxYear->value()); // Update yearly calculations
 
     // Save the reset values to the file
+    updateAverageBalance();
+    ui->label_14->setText("Daily Balance: 0.00");
     saveTransactionsToFile(filename);
 }
+
+void MainWindow::on_dateEdit_dateChanged(const QDate &date)
+{
+    double dailyIncome = 0.0;
+    double dailyExpense = 0.0;
+
+    // Iterate through your transactions to calculate the daily income and expense
+    Node<Transaction>* current = transactions.head;
+    while (current) {
+        if (current->data.getDate() == date) {
+            if (current->data.getType() == "income") {
+                dailyIncome += current->data.getAmount();
+            } else if (current->data.getType() == "expense") {
+                dailyExpense += current->data.getAmount();
+            }
+        }
+        current = current->next;
+    }
+
+    double dailyBalance = dailyIncome - dailyExpense;
+
+    // Store the daily balance in the QMap
+    dailyBalances[date] = dailyBalance;
+
+    // Update the label with the daily balance
+    ui->label_14->setText("Daily Balance: " + QString::number(dailyBalance, 'f', 2));
+
+    updateAverageBalance();
+}
+
+void MainWindow::updateAverageBalance()
+{
+    double totalBalance = 0.0;
+    int days = 0;
+
+    // Iterate through the daily balances
+    for (auto it = dailyBalances.begin(); it != dailyBalances.end(); ++it) {
+        totalBalance += it.value(); // Access the value using it.value()
+        days++;
+    }
+
+    // Calculate the average balance
+    double averageBalance = (days > 0) ? totalBalance / days : 0.0;
+
+    // Update the label with the average balance
+    ui->label_15->setText("Average Balance: " + QString::number(averageBalance, 'f', 2));
+
+    // Debug information
+    qDebug() << "updateAverageBalance called. Total Balance:" << totalBalance << "Days:" << days << "Average Balance:" << averageBalance;
+}
+
+
 
 void MainWindow::on_monthComboBox_currentIndexChanged(int index)
 {

@@ -1,0 +1,15 @@
+Balance,17600
+TotalIncome,22000
+TotalExpense,4400
+2024-06-01,Salary,20000,,income
+2024-06-01,Food Consumption,500,,expense
+2024-06-01,Transportation,100,,expense
+2024-06-02,Food Consumption,500,,expense
+2024-06-02,Transportation,100,,expense
+2024-06-02,Other,1500,,expense
+2024-06-03,Food Consumption,500,,expense
+2024-06-03,Transportation,100,,expense
+2024-06-04,Bonus,2000,,income
+2024-06-03,Food Consumption,500,,expense
+2024-06-04,Transportation,100,,expense
+2024-06-04,Food Consumption,500,,expense

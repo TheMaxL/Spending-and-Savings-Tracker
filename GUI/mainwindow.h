@@ -34,12 +34,16 @@ private slots:
     void on_clearIncome_clicked();
     void on_resetButton_clicked();
     void on_monthComboBox_currentIndexChanged(int index);
+    void on_dateEdit_dateChanged(const QDate &date);
+    void updateAverageBalance();
 
 private:
     Ui::MainWindow *ui;
     LinkedList<Transaction> transactions; // Use linked list instead of QList
     double balance, totalIncome, totalExpense, amount, budget;
     int year;
+    double averageBalance;
+    QMap<QDate, double> dailyBalances;
 
     void updateBalance();
     void updateIncome();
