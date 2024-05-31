@@ -28,7 +28,6 @@ public:
 private slots:
     void onPushButtonClicked();
     void onPushButton_2Clicked();
-    void on_tabWidget_tabBarClicked(int index);
     void on_spinBoxYear_valueChanged(int arg1);
     void on_clearExpenses_clicked();
     void on_clearIncome_clicked();
@@ -38,10 +37,10 @@ private slots:
     void updateAverageBalance();
     void updateDaySpinBoxRange(int index);
     void on_monthComboBox_2_currentIndexChanged(int index);
-
     void on_monthComboBox_3_currentIndexChanged(int index);
-
     void on_spinBoxDay_valueChanged(int arg1);
+    void on_tabWidget_2_currentChanged(int index);
+    void on_tabWidget_currentChanged(int index);
 
 private:
     Ui::MainWindow *ui;
@@ -58,6 +57,7 @@ private:
     void calculateYearlyIncomeAndExpense(int year);
     void createPieChart();
     void updateMonthly();
+    void printMonthly();
     void updateDaily();
     void printDaily();
 };

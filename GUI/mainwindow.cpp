@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->tabWidget->setCurrentIndex(0);
+    ui->tabWidget_2->setCurrentIndex(0);
 
 
     connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::onPushButtonClicked);
@@ -29,11 +30,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->resetButton->setStyleSheet("color: red;");
     ui->clearExpenses->setStyleSheet("color: red;");
     ui->clearIncome->setStyleSheet("color: red;");
-    updateDaySpinBoxRange(0);
+
     year = 2024;
     month = 1;
     monthPie = 1;
     monthDaily = 1, day = 1;
+
+    updateDaySpinBoxRange(0);
+    printDaily();
+
 
     loadTransactionsFromFile("transactions.txt");
 }
@@ -143,11 +148,6 @@ void MainWindow::calculateYearlyIncomeAndExpense(int year)
 }
 
 
-void MainWindow::on_tabWidget_tabBarClicked(int index)
-{
-    calculateYearlyIncomeAndExpense(year);
-    updateMonthly();
-}
 
 
 void MainWindow::on_spinBoxYear_valueChanged(int arg1)
@@ -383,7 +383,12 @@ void MainWindow::createPieChart()
 void MainWindow::on_monthComboBox_2_currentIndexChanged(int index)
 {
     month = index + 1;
+    printMonthly();
+    updateMonthly();
+}
 
+void MainWindow::printMonthly()
+{
     ui->monthlyList->clear();
 
     Node<Transaction>* current = transactions.head;
@@ -405,7 +410,6 @@ void MainWindow::on_monthComboBox_2_currentIndexChanged(int index)
         }
         current = current->next;
     }
-    updateMonthly();
 }
 
 void MainWindow::updateMonthly()
@@ -468,7 +472,6 @@ void MainWindow::printDaily()
         }
         current = current->next;
     }
-    updateDaily();
 }
 
 void MainWindow::updateDaily()
@@ -510,5 +513,25 @@ void MainWindow::on_spinBoxDay_valueChanged(int arg1)
     day = arg1;
     updateDaily();
     printDaily();
+}
+
+
+void MainWindow::on_tabWidget_currentChanged(int index)
+{
+    calculateYearlyIncomeAndExpense(year);
+    updateMonthly();
+    printMonthly();
+    updateDaily();
+    printDaily();
+}
+
+
+void MainWindow::on_tabWidget_2_currentChanged(int index)
+{
+    updateDaySpinBoxRange(0);
+    printDaily();
+    updateDaily();
+    printMonthly();
+    updateMonthly();
 }
 
