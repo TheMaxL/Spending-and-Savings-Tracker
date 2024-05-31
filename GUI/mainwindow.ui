@@ -24,7 +24,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -69,7 +69,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <item>
          <property name="text">
-          <string>Food Consumption</string>
+          <string>Food</string>
          </property>
         </item>
         <item>
@@ -127,7 +127,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="dateTime">
          <datetime>
-          <hour>16</hour>
+          <hour>8</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2024</year>
@@ -137,17 +137,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>7</hour>
+          <hour>23</hour>
           <minute>59</minute>
           <second>59</second>
           <year>2034</year>
           <month>12</month>
-          <day>29</day>
+          <day>28</day>
          </datetime>
         </property>
         <property name="minimumDateTime">
          <datetime>
-          <hour>16</hour>
+          <hour>8</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2013</year>
@@ -314,11 +314,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </item>
         <item>
          <property name="text">
-          <string>Carry Over</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
           <string>Bonus</string>
          </property>
         </item>
@@ -339,7 +334,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="dateTime">
          <datetime>
-          <hour>8</hour>
+          <hour>0</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2024</year>
@@ -349,17 +344,17 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>7</hour>
+          <hour>23</hour>
           <minute>59</minute>
           <second>59</second>
           <year>2034</year>
           <month>12</month>
-          <day>29</day>
+          <day>28</day>
          </datetime>
         </property>
         <property name="minimumDateTime">
          <datetime>
-          <hour>16</hour>
+          <hour>8</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2013</year>
@@ -555,12 +550,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <rect>
           <x>0</x>
           <y>110</y>
-          <width>531</width>
+          <width>1001</width>
           <height>441</height>
          </rect>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="tab_5">
          <attribute name="title">
@@ -941,10 +936,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <widget class="QWidget" name="PieChartExpense" native="true">
           <property name="geometry">
            <rect>
-            <x>20</x>
+            <x>0</x>
             <y>50</y>
-            <width>171</width>
-            <height>111</height>
+            <width>471</width>
+            <height>321</height>
            </rect>
           </property>
          </widget>
@@ -1027,37 +1022,11 @@ li.checked::marker { content: &quot;\2612&quot;; }
          <widget class="QWidget" name="PieChartIncome" native="true">
           <property name="geometry">
            <rect>
-            <x>300</x>
+            <x>480</x>
             <y>50</y>
-            <width>171</width>
-            <height>111</height>
+            <width>501</width>
+            <height>321</height>
            </rect>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_3">
-          <property name="geometry">
-           <rect>
-            <x>70</x>
-            <y>20</y>
-            <width>63</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Expense</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_4">
-          <property name="geometry">
-           <rect>
-            <x>360</x>
-            <y>20</y>
-            <width>63</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Income</string>
           </property>
          </widget>
         </widget>

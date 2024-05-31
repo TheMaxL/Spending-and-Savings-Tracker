@@ -11,6 +11,7 @@
 #include <QtCharts/QPieSlice>
 #include <QtCharts/QChart>
 
+
 QT_USE_NAMESPACE
 
 MainWindow::MainWindow(QWidget *parent)
@@ -20,7 +21,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->tabWidget->setCurrentIndex(0);
     ui->tabWidget_2->setCurrentIndex(0);
-
 
     connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::onPushButtonClicked);
     connect(ui->pushButton_2, &QPushButton::clicked, this, &MainWindow::onPushButton_2Clicked);
@@ -146,8 +146,6 @@ void MainWindow::calculateYearlyIncomeAndExpense(int year)
     ui->yearlyIncomeLabel->setStyleSheet("color: green;");
     ui->yearlyBalanceLabel->setStyleSheet("color: blue;");
 }
-
-
 
 
 void MainWindow::on_spinBoxYear_valueChanged(int arg1)
@@ -365,20 +363,256 @@ void MainWindow::updateAverageBalance()
 }
 
 
-
 void MainWindow::on_monthComboBox_currentIndexChanged(int index)
 {
-    createPieChart();
+    monthPie = index + 1;
+    createPieChartIncome();
+    createPieChartExpense();
 }
 
 
-void MainWindow::createPieChart()
+void MainWindow::createPieChartIncome()
 {
-    // will add graph of expenses and income
+    Node<Transaction>* current = transactions.head;
+    double salary = 0.0, allowance = 0.0, bonus = 0.0, other = 0.0, total = 0.0;
+
+    while (current)
+    {
+        QDate transactionDate = current->data.getDate();
+        if (transactionDate.year() == year && transactionDate.month() == monthPie && current->data.getType() == "income")
+        {
+            total += current->data.getAmount();
+            if (current->data.getCategory() == "Salary")
+            {
+                salary += current->data.getAmount();
+            }
+            else if (current->data.getCategory() == "Allowance")
+            {
+                allowance += current->data.getAmount();
+            }
+            else if (current->data.getCategory() == "Bonus")
+            {
+                bonus += current->data.getAmount();
+            }
+            else if (current->data.getCategory() == "Other")
+            {
+                other += current->data.getAmount();
+            }
+        }
+        current = current->next; // Move to the next node
+    }
+
+    QPieSeries *series = new QPieSeries();
+
+    // Add dummy data points if total is 0
+    if (total <= 0.0)
+    {
+        series->append("Salary", 1); // Add a small value for display
+        series->append("Allowance", 1); // Add a small value for display
+        series->append("Bonus", 1); // Add a small value for display
+        series->append("Other", 1); // Add a small value for display
+    }
+    else
+    {
+        // Add actual data points
+        series->append("Salary", salary / total); // Convert to percentage
+        series->append("Allowance", allowance / total); // Convert to percentage
+        series->append("Bonus", bonus / total); // Convert to percentage
+        series->append("Other", other / total); // Convert to percentage
+    }
+
+    // Custom colors for the slices (different shades of green)
+    QStringList colors = {"#00FF00", "#00CC00", "#009900", "#006600"};
+    int colorIndex = 0;
+
+    // Set colors for each slice
+    for (QPieSlice *slice : series->slices())
+    {
+        slice->setColor(QColor(colors[colorIndex]));
+        colorIndex = (colorIndex + 1) % colors.size();
+    }
+
+    QChart *chart = new QChart();
+    chart->addSeries(series);
+    chart->setTitle("Income");
+    chart->legend()->hide();
+
+    // Set label format to show percentages
+    chart->setTheme(QChart::ChartThemeLight);
+
+    // Set labels visible and format
+    // Iterate through the slices in the series
+    for (QPieSlice *slice : series->slices()) {
+        // Always set the label visible for each slice
+        slice->setLabelVisible(true);
+
+        // Check if the total is greater than 0 to avoid division by zero
+        if (total > 0.0) {
+            if (slice->percentage() > 0.0) {
+                slice->setLabelVisible(true);
+                QString percentage = QString::number(slice->percentage() * 100, 'f', 2);
+                slice->setLabel(QString("%1 (%2%)").arg(slice->label()).arg(percentage));
+            } else {
+                slice->setLabelVisible(false);
+            }
+        } else {
+            // Handle the case when total is 0 (to avoid division by zero)
+            slice->setLabel(QString("%1 (%2%)").arg(slice->label()).arg(0.0, 0, 'f', 2));
+        }
+    }
+
+
+    QChartView *chartview = new QChartView(chart);
+    chartview->setRenderHint(QPainter::Antialiasing);
+
+    // Clear any existing layout or widgets in PieChartIncome
+    if (ui->PieChartIncome->layout())
+    {
+        QLayoutItem *item;
+        while ((item = ui->PieChartIncome->layout()->takeAt(0)) != nullptr)
+        {
+            delete item->widget(); // delete the widget
+            delete item; // delete the layout item
+        }
+        delete ui->PieChartIncome->layout(); // delete the layout
+    }
+
+    // Set the new layout and add the chart view
+    QVBoxLayout *layout = new QVBoxLayout(ui->PieChartIncome);
+    layout->addWidget(chartview);
+    ui->PieChartIncome->setLayout(layout);
 }
 
 
 
+
+void MainWindow::createPieChartExpense()
+{
+    Node<Transaction>* current = transactions.head;
+    double food = 0.0, bills = 0.0, comfort = 0.0, hygiene = 0.0, medicine = 0.0, transportation = 0.0, other = 0.0, total = 0.0;
+
+    while (current)
+    {
+        QDate transactionDate = current->data.getDate();
+        if (transactionDate.year() == year && transactionDate.month() == monthPie && current->data.getType() == "expense")
+        {
+            total += current->data.getAmount();
+            if (current->data.getCategory() == "Food")
+            {
+                food += current->data.getAmount();
+            }
+            else if (current->data.getCategory() == "Bills")
+            {
+                bills += current->data.getAmount();
+            }
+            else if (current->data.getCategory() == "Comfort")
+            {
+                comfort += current->data.getAmount();
+            }
+            else if (current->data.getCategory() == "Hygiene")
+            {
+                hygiene += current->data.getAmount();
+            }
+            else if (current->data.getCategory() == "Medicine")
+            {
+                medicine += current->data.getAmount();
+            }
+            else if (current->data.getCategory() == "Transportation")
+            {
+                transportation += current->data.getAmount();
+            }
+            else if (current->data.getCategory() == "Other")
+            {
+                other += current->data.getAmount();
+            }
+        }
+        current = current->next; // Move to the next node
+    }
+
+    QPieSeries *series = new QPieSeries();
+
+    // Add dummy data points if total is 0
+    if (total <= 0.0)
+    {
+        series->append("Food", 1);
+        series->append("Bills", 1);
+        series->append("Comfort", 1);
+        series->append("Hygiene", 1);
+        series->append("Medicine", 1);
+        series->append("Transportation", 1);
+        series->append("Other", 1);
+    }
+    else
+    {
+        series->append("Food", food / total);
+        series->append("Bills", bills / total);
+        series->append("Comfort", comfort / total);
+        series->append("Hygiene", hygiene / total);
+        series->append("Medicine", medicine / total);
+        series->append("Transportation", transportation / total);
+        series->append("Other", other / total);
+    }
+
+    // Custom colors for the slices (different shades of red)
+    QStringList colors = {"#8B0000", "#DC143C", "#B22222", "#CD5C5C", "#F08080", "#FF0000", "#660000"};
+    int colorIndex = 0;
+
+    // Set colors for each slice
+    for (QPieSlice *slice : series->slices())
+    {
+        slice->setColor(QColor(colors[colorIndex]));
+        colorIndex = (colorIndex + 1) % colors.size();
+    }
+
+    QChart *chart = new QChart();
+    chart->addSeries(series);
+    chart->setTitle("Expense");
+    chart->legend()->hide();
+
+    // Set label format to show percentages
+    chart->setTheme(QChart::ChartThemeLight);
+
+    // Set labels visible and format
+    // Iterate through the slices in the series
+    for (QPieSlice *slice : series->slices()) {
+        // Always set the label visible for each slice
+        slice->setLabelVisible(true);
+
+        // Check if the total is greater than 0 to avoid division by zero
+        if (total > 0.0) {
+            if (slice->percentage() > 0.0) {
+                slice->setLabelVisible(true);
+                QString percentage = QString::number(slice->percentage() * 100, 'f', 2);
+                slice->setLabel(QString("%1 (%2%)").arg(slice->label()).arg(percentage));
+            } else {
+                slice->setLabelVisible(false);
+            }
+        } else {
+            // Handle the case when total is 0 (to avoid division by zero)
+            slice->setLabel(QString("%1 (%2%)").arg(slice->label()).arg(0.0, 0, 'f', 2));
+        }
+    }
+
+    QChartView *chartview = new QChartView(chart);
+    chartview->setRenderHint(QPainter::Antialiasing);
+
+    // Clear any existing layout or widgets in PieChartExpense
+    if (ui->PieChartExpense->layout())
+    {
+        QLayoutItem *item;
+        while ((item = ui->PieChartExpense->layout()->takeAt(0)) != nullptr)
+        {
+            delete item->widget(); // delete the widget
+            delete item; // delete the layout item
+        }
+        delete ui->PieChartExpense->layout(); // delete the layout
+    }
+
+    // Set the new layout and add the chart view
+    QVBoxLayout *layout = new QVBoxLayout(ui->PieChartExpense);
+    layout->addWidget(chartview);
+    ui->PieChartExpense->setLayout(layout);
+}
 
 void MainWindow::on_monthComboBox_2_currentIndexChanged(int index)
 {
@@ -523,6 +757,8 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     printMonthly();
     updateDaily();
     printDaily();
+    createPieChartExpense();
+    createPieChartIncome();
 }
 
 
@@ -533,5 +769,7 @@ void MainWindow::on_tabWidget_2_currentChanged(int index)
     updateDaily();
     printMonthly();
     updateMonthly();
+    createPieChartExpense();
+    createPieChartIncome();
 }
 

@@ -5,6 +5,10 @@
 #include <QDate>
 #include <QString>
 #include <QLabel>
+#include <QtCore>
+#include <QtGui>
+#include <QtWidgets>
+#include <QtCharts>
 #include "transaction.h"
 #include "linkedlist.h"
 
@@ -55,7 +59,8 @@ private:
     void updateExpense();
     void updateBudget();
     void calculateYearlyIncomeAndExpense(int year);
-    void createPieChart();
+    void createPieChartIncome();
+    void createPieChartExpense();
     void updateMonthly();
     void printMonthly();
     void updateDaily();
