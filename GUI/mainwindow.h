@@ -37,11 +37,13 @@ private slots:
     void on_dateEdit_dateChanged(const QDate &date);
     void updateAverageBalance();
 
+    void on_monthComboBox_2_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
     LinkedList<Transaction> transactions; // Use linked list instead of QList
     double balance, totalIncome, totalExpense, amount, budget;
-    int year;
+    int year, month, monthPie;
     double averageBalance;
     QMap<QDate, double> dailyBalances;
 
@@ -51,7 +53,7 @@ private:
     void updateBudget();
     void calculateYearlyIncomeAndExpense(int year);
     void createPieChart();
-
+    void updateMonthly();
 };
 
 #endif // MAINWINDOW_H

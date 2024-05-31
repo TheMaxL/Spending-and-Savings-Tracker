@@ -24,12 +24,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::onPushButtonClicked);
     connect(ui->pushButton_2, &QPushButton::clicked, this, &MainWindow::onPushButton_2Clicked);
     ui->resetButton->setStyleSheet("color: red;");
-    ui->yearlyExpenseLabel->setStyleSheet("color: red;");
-    ui->yearlyIncomeLabel->setStyleSheet("color: green;");
-    ui->yearlyBalanceLabel->setStyleSheet("color: blue;");
     ui->clearExpenses->setStyleSheet("color: red;");
     ui->clearIncome->setStyleSheet("color: red;");
     year = 2024;
+    month = 1;
+    monthPie = 1;
 
     loadTransactionsFromFile("transactions.txt");
 }
@@ -133,12 +132,16 @@ void MainWindow::calculateYearlyIncomeAndExpense(int year)
     ui->yearlyIncomeLabel->setText("₱" + QString::number(yearlyIncome, 'f', 2));
     ui->yearlyExpenseLabel->setText("₱" + QString::number(yearlyExpense, 'f', 2));
     ui->yearlyBalanceLabel->setText("₱" + QString::number(yearlyBalance, 'f', 2));
+    ui->yearlyExpenseLabel->setStyleSheet("color: red;");
+    ui->yearlyIncomeLabel->setStyleSheet("color: green;");
+    ui->yearlyBalanceLabel->setStyleSheet("color: blue;");
 }
 
 
 void MainWindow::on_tabWidget_tabBarClicked(int index)
 {
     calculateYearlyIncomeAndExpense(year);
+    updateMonthly();
 }
 
 
@@ -369,5 +372,59 @@ void MainWindow::createPieChart()
     // will add graph of expenses and income
 }
 
+
+
+
+void MainWindow::on_monthComboBox_2_currentIndexChanged(int index)
+{
+    month = index + 1;
+
+    ui->monthlyList->clear();
+
+    Node<Transaction>* current = transactions.head;
+    while (current) {
+        QDate transactionDate = current->data.getDate();
+        if (transactionDate.year() == year && transactionDate.month() == month) {
+            // This transaction matches the chosen month and year, add it to the list widget
+            QString transactionInfo = QString("%1 - %2: ₱%3")
+                                          .arg(transactionDate.toString("yyyy-MM-dd"))
+                                          .arg(current->data.getCategory())
+                                          .arg(current->data.getAmount());
+
+            if (!current->data.getDescription().isEmpty()) {
+                transactionInfo.append("    (" + current->data.getDescription() + ")");
+            }
+
+            QListWidgetItem *item = new QListWidgetItem(transactionInfo);
+            ui->monthlyList->addItem(item);
+        }
+        current = current->next;
+    }
+    updateMonthly();
+}
+
+void MainWindow::updateMonthly() {
+    double monthlyExpense = 0.0, monthlyIncome = 0.0, monthlyBalance = 0.0;
+    Node<Transaction>* current = transactions.head;
+    while (current) {
+        QDate currentDate = current->data.getDate();
+        if (currentDate.year() == year && currentDate.month() == month) {
+            if (current->data.getType() == "income") {
+                monthlyIncome += current->data.getAmount();
+                monthlyBalance += current->data.getAmount();
+            } else if (current->data.getType() == "expense") {
+                monthlyExpense += current->data.getAmount();
+                monthlyBalance -= current->data.getAmount();
+            }
+        }
+        current = current->next;
+    }
+    ui->monthlyIncomeLabel->setText("₱" + QString::number(monthlyIncome, 'f', 2));
+    ui->monthlyExpenseLabel->setText("₱" + QString::number(monthlyExpense, 'f', 2));
+    ui->monthlyBalanceLabel->setText("₱" + QString::number(monthlyBalance, 'f', 2));
+    ui->monthlyExpenseLabel->setStyleSheet("color: red;");
+    ui->monthlyIncomeLabel->setStyleSheet("color: green;");
+    ui->monthlyBalanceLabel->setStyleSheet("color: blue;");
+}
 
 
