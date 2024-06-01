@@ -18,6 +18,12 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
+struct CategoryStats {
+    double mean;
+    double variance;
+    double standardDeviation;
+};
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -28,6 +34,15 @@ public:
     void saveTransactionsToFile(const QString& filename);
     void loadTransactionsFromFile(const QString& filename);
     void resetData(const QString& filename);
+    enum AbnormalityLevel{
+        NoData,
+        Normal,
+        Irregular,
+        Abnormal,
+        ExtremelyAbnormal,
+    };
+
+    AbnormalityLevel getAbnormalityLevel(double amount, double mean, double stdDev);
 
 private slots:
     void onPushButtonClicked();
@@ -54,6 +69,8 @@ private:
     int year, month, monthPie, monthDaily, day;
     double averageBalance;
     QMap<QDate, double> dailyBalances;
+    QMap<QString, CategoryStats> CategoryStats;
+
 
     void updateBalance();
     void updateIncome();

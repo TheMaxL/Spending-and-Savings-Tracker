@@ -54,6 +54,25 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+MainWindow::AbnormalityLevel MainWindow::getAbnormalityLevel(double amount, double mean, double stdDev) {
+    if (stdDev == 0.0) {
+        return NoData; // No statistical data available
+    }
+
+    double deviation = std::abs(amount - mean);
+
+    if (deviation <= stdDev) {
+        return Normal; // Within 1 standard deviation
+    } else if (deviation <= 2 * stdDev) {
+        return Irregular; // Beyond 1 standard deviation but less than 2
+    } else if (deviation <= 3 * stdDev) {
+        return Abnormal; // Beyond 2 standard deviations but less than 3
+    } else {
+        return ExtremelyAbnormal; // Beyond 3 standard deviations
+    }
+}
+
+
 void MainWindow::onPushButtonClicked()
 {
     QDate date = ui->dateEdit->date();
@@ -77,6 +96,29 @@ void MainWindow::onPushButtonClicked()
     updateExpense();
     ui->textEdit->clear();
     ui->plainTextEdit->clear();
+
+    double mean = CategoryStats[category].mean;
+    double stdDev = CategoryStats[category].standardDeviation;
+
+    AbnormalityLevel level = getAbnormalityLevel(amount, mean, stdDev);
+
+    switch (level) {
+    case NoData:
+        ui->abnormality->setText("No statistical data available");
+        break;
+    case Normal:
+        ui->abnormality->setText("Normal");
+        break;
+    case Irregular:
+        ui->abnormality->setText("Irregular");
+        break;
+    case Abnormal:
+        ui->abnormality->setText("Abnormal");
+        break;
+    case ExtremelyAbnormal:
+        ui->abnormality->setText("Extremely abnormal");
+        break;
+    }
 }
 
 void MainWindow::onPushButton_2Clicked()
@@ -764,6 +806,13 @@ void MainWindow::on_pushButton_7_clicked() {
     double variance = calculateVariance(balances, mean);
     double stdDev = calculateStandardDeviation(variance);
 
+    struct CategoryStats stats;
+    stats.mean = mean;
+    stats.variance = variance;
+    stats.standardDeviation = stdDev;
+
+    CategoryStats[category] = stats;
+
     ui->label_19->setText("Mean Balance: ₱" + QString::number(mean, 'f', 2));
     ui->label_20->setText("Variance: ₱" + QString::number(variance, 'f', 2));
     ui->label_21->setText("Standard Deviation: ₱" + QString::number(stdDev, 'f', 2));
@@ -792,24 +841,18 @@ void MainWindow::updateDaily()
     ui->dailyIncomeLabel->setStyleSheet("color: green;");
     ui->dailyBalanceLabel->setStyleSheet("color: blue;");
 }
-
-
 void MainWindow::on_monthComboBox_3_currentIndexChanged(int index)
 {
     monthDaily = index + 1;
     updateDaily();
     printDaily();
 }
-
-
 void MainWindow::on_spinBoxDay_valueChanged(int arg1)
 {
     day = arg1;
     updateDaily();
     printDaily();
 }
-
-
 void MainWindow::on_tabWidget_currentChanged(int index)
 {
     calculateYearlyIncomeAndExpense(year);
@@ -820,8 +863,6 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     createPieChartExpense();
     createPieChartIncome();
 }
-
-
 void MainWindow::on_tabWidget_2_currentChanged(int index)
 {
     updateDaySpinBoxRange(0);

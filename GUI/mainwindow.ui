@@ -24,7 +24,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -142,7 +142,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <second>59</second>
           <year>2034</year>
           <month>12</month>
-          <day>28</day>
+          <day>27</day>
          </datetime>
         </property>
         <property name="minimumDateTime">
@@ -152,7 +152,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <second>0</second>
           <year>2013</year>
           <month>12</month>
-          <day>28</day>
+          <day>27</day>
          </datetime>
         </property>
         <property name="calendarPopup">
@@ -229,6 +229,32 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="text">
          <string>Clear </string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>230</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Abnormality Level:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="abnormality">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>260</y>
+          <width>201</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </widget>
@@ -349,7 +375,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <second>59</second>
           <year>2034</year>
           <month>12</month>
-          <day>28</day>
+          <day>27</day>
          </datetime>
         </property>
         <property name="minimumDateTime">
@@ -359,7 +385,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
           <second>0</second>
           <year>2013</year>
           <month>12</month>
-          <day>28</day>
+          <day>27</day>
          </datetime>
         </property>
         <property name="calendarPopup">
