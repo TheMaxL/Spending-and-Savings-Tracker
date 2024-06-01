@@ -1,5 +1,6 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
+#include "transaction.h"
 
 template <typename T>
 class Node {
@@ -49,7 +50,43 @@ public:
         head = nullptr;
     }
 
-    // Additional methods like remove, find, etc., can be added here
+    bool deleteNode(Transaction transaction)
+    {
+        Node<T>* current = head;
+        Node<T>* previous = nullptr;
+
+        while (current != nullptr) {
+            if (current->data == transaction) {
+                if (previous == nullptr) {
+                    // Deleting the head node
+                    head = current->next;
+                } else {
+                    previous->next = current->next;
+                }
+                delete current;
+                return true;
+            }
+            previous = current;
+            current = current->next;
+        }
+        return false;
+    }
+
+    T* at(int index) const {
+        Node<T>* current = head;
+        int count = 0;
+
+        while (current != nullptr) {
+            if (count == index) {
+                return &(current->data);
+            }
+            count++;
+            current = current->next;
+        }
+        return nullptr;  // Index out of bounds
+    }
+
 };
+
 
 #endif // LINKEDLIST_H

@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "editdialog.h"
 #include "transaction.h"
 #include "linkedlist.h"
 #include <QFile>
@@ -30,7 +31,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->monthComboBox_3, QOverload<int>::of(&QComboBox::currentIndexChanged),
     this, &MainWindow::updateDaySpinBoxRange);
     connect(ui->pushButton_7, &QPushButton::clicked, this, &MainWindow::on_pushButton_7_clicked);
-
 
     ui->resetButton->setStyleSheet("color: red;");
     ui->clearExpenses->setStyleSheet("color: red;");
@@ -106,17 +106,29 @@ void MainWindow::onPushButton_2Clicked()
 
 void MainWindow::updateBalance()
 {
+    if (balance < 0)
+    {
+        balance = 0;
+    }
     ui->balance->setText("Balance: ₱" + QString::number(balance, 'f', 2));
     ui->balance_2->setText("Balance: ₱" + QString::number(balance, 'f', 2));
 }
 
 void MainWindow::updateIncome()
 {
+    if (totalIncome < 0)
+    {
+        totalIncome = 0;
+    }
     ui->labelTotalIncome->setText("Total Income: ₱" + QString::number(totalIncome, 'f', 2));
 }
 
 void MainWindow::updateExpense()
 {
+    if (totalExpense < 0)
+    {
+        totalExpense = 0;
+    }
     ui->labelTotalExpense->setText("Total Expenses: ₱" + QString::number(totalExpense, 'f', 2));
 }
 
@@ -812,6 +824,9 @@ void MainWindow::on_spinBoxDay_valueChanged(int arg1)
 
 void MainWindow::on_tabWidget_currentChanged(int index)
 {
+    updateBalance();
+    updateExpense();
+    updateIncome();
     calculateYearlyIncomeAndExpense(year);
     updateMonthly();
     printMonthly();
@@ -832,4 +847,120 @@ void MainWindow::on_tabWidget_2_currentChanged(int index)
     createPieChartExpense();
     createPieChartIncome();
 }
+
+void MainWindow::editItem(QListWidgetItem *item, int x)
+{
+    int row;
+    if (x == 1)
+    {
+        row = ui->monthlyList->row(item);
+    } else if (x == 2)
+    {
+        row = ui->dailyList->row(item);
+    }
+    Transaction* transaction = transactions.at(row);  // Retrieve the transaction pointer
+    if (transaction) {
+        if (transaction->getType() == "expense")
+        {
+            balance += transaction->getAmount();
+            totalExpense -= transaction->getAmount();
+        } else if (transaction->getType() == "income")
+        {
+            balance -= transaction->getAmount();
+            totalIncome -= transaction->getAmount();
+        }
+        editDialog edit;
+        edit.setModal(this);
+        edit.setTransaction(transaction);
+        edit.exec();
+        }
+    else {
+        QMessageBox::information(this, "Error", "Transaction not found in the list.");
+    }
+}
+
+void MainWindow::deleteItem(QListWidgetItem *item, int x)
+{
+    int row;
+    if (x == 1)
+    {
+        row = ui->monthlyList->row(item);
+    } else if (x == 2)
+    {
+        row = ui->dailyList->row(item);
+    }
+    Transaction* transaction = transactions.at(row);  // Retrieve the transaction pointer
+    if (transaction) {
+        QString type = transaction->getType();
+        double amount = transaction->getAmount();
+        if (transactions.deleteNode(*transaction)) {
+            if (type == "expense") {
+                balance += amount; // Add back the expense amount
+                totalExpense -= amount; // Update total expense
+            } else if (type == "income") {
+                balance -= amount; // Deduct the income amount
+                totalIncome -= amount; // Update total income
+            }
+        } else {
+            QMessageBox::information(this, "Error", "Transaction not found in the list.");
+        }
+    } else {
+        QMessageBox::information(this, "Error", "Invalid transaction index.");
+    }
+}
+
+void MainWindow::on_monthlyList_itemDoubleClicked(QListWidgetItem *item)
+{
+    editOrDelete(item, 1);
+    printMonthly();
+    updateMonthly();
+    calculateYearlyIncomeAndExpense(year);
+}
+
+void MainWindow::on_dailyList_itemDoubleClicked(QListWidgetItem *item)
+{
+    editOrDelete(item, 2);
+    printDaily();
+    updateDaily();
+    calculateYearlyIncomeAndExpense(year);
+}
+
+void MainWindow::editOrDelete(QListWidgetItem *item, int x)
+{
+    QPoint pos;
+    // Get the position of the mouse cursor relative to the list widget
+    if (x == 1)
+    {
+        pos = ui->monthlyList->mapFromGlobal(QCursor::pos());
+    } else if (x == 2)
+    {
+        pos = ui->dailyList->mapFromGlobal(QCursor::pos());
+    }
+
+    // Create a context menu
+    QMenu contextMenu(tr("Context Menu"), this);
+
+    // Apply stylesheet to the QMenu to add hover effect
+    contextMenu.setStyleSheet("QMenu::item:hover { background-color: rgba(30, 144, 255, 100); }");
+
+    // Add actions to the context menu
+    QAction editAction("Edit", this);
+    QAction deleteAction("Delete", this);
+
+    // Connect actions to slots
+    connect(&editAction, &QAction::triggered, [=](){ editItem(item, x); });
+    connect(&deleteAction, &QAction::triggered, [=](){ deleteItem(item, x); });
+
+    // Add actions to the context menu
+    contextMenu.addAction(&editAction);
+    contextMenu.addAction(&deleteAction);
+
+    // Show the context menu at the mouse position
+    if (x == 1) {
+        contextMenu.exec(ui->monthlyList->mapToGlobal(pos));
+    } else if (x == 2)
+    {
+        contextMenu.exec(ui->dailyList->mapToGlobal(pos));
+    }
+    }
 

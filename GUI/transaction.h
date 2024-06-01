@@ -6,6 +6,12 @@
 
 class Transaction {
 public:
+    QDate date;
+    QString category;
+    double amount;
+    QString description;
+    QString type;
+
     Transaction(QDate date, QString category, double amount, QString description, QString type)
         : date(date), category(category), amount(amount), description(description), type(type) {}
 
@@ -15,12 +21,11 @@ public:
     QString getDescription() const { return description; }
     QString getType() const { return type; }
 
-private:
-    QDate date;
-    QString category;
-    double amount;
-    QString description;
-    QString type;
+    bool operator==(const Transaction& other) const {
+        return date == other.date && category == other.category &&
+               amount == other.amount && description == other.description &&
+               type == other.type;
+    }
 };
 
 #endif // TRANSACTION_H

@@ -46,6 +46,11 @@ private slots:
     void on_tabWidget_2_currentChanged(int index);
     void on_tabWidget_currentChanged(int index);
     void on_pushButton_7_clicked();
+    void editOrDelete(QListWidgetItem *item, int x);
+    void editItem(QListWidgetItem *item, int x);
+    void deleteItem(QListWidgetItem *item, int x);
+    void on_monthlyList_itemDoubleClicked(QListWidgetItem *item);
+    void on_dailyList_itemDoubleClicked(QListWidgetItem *item);
 
 private:
     Ui::MainWindow *ui;
@@ -66,6 +71,11 @@ private:
     void printMonthly();
     void updateDaily();
     void printDaily();
+
+    QAction *editAction;
+    QAction *deleteAction;
+    QMenu contextMenu;
+
 };
 
 #endif // MAINWINDOW_H
