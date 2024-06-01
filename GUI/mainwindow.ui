@@ -24,11 +24,7 @@
        </size>
       </property>
       <property name="currentIndex">
-<<<<<<< HEAD
-       <number>0</number>
-=======
-       <number>3</number>
->>>>>>> ce5119d0871fc4447181ba44e8ee159635daa34d
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -131,7 +127,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="dateTime">
          <datetime>
-          <hour>8</hour>
+          <hour>0</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2024</year>
@@ -141,7 +137,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>23</hour>
+          <hour>15</hour>
           <minute>59</minute>
           <second>59</second>
           <year>2034</year>
@@ -151,7 +147,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="minimumDateTime">
          <datetime>
-          <hour>8</hour>
+          <hour>0</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2013</year>
@@ -364,7 +360,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="dateTime">
          <datetime>
-          <hour>0</hour>
+          <hour>16</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2024</year>
@@ -374,7 +370,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>23</hour>
+          <hour>15</hour>
           <minute>59</minute>
           <second>59</second>
           <year>2034</year>
@@ -384,7 +380,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
         </property>
         <property name="minimumDateTime">
          <datetime>
-          <hour>8</hour>
+          <hour>0</hour>
           <minute>0</minute>
           <second>0</second>
           <year>2013</year>
