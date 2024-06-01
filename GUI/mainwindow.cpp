@@ -148,29 +148,17 @@ void MainWindow::onPushButton_2Clicked()
 
 void MainWindow::updateBalance()
 {
-    if (balance < 0)
-    {
-        balance = 0;
-    }
     ui->balance->setText("Balance: ₱" + QString::number(balance, 'f', 2));
     ui->balance_2->setText("Balance: ₱" + QString::number(balance, 'f', 2));
 }
 
 void MainWindow::updateIncome()
 {
-    if (totalIncome < 0)
-    {
-        totalIncome = 0;
-    }
     ui->labelTotalIncome->setText("Total Income: ₱" + QString::number(totalIncome, 'f', 2));
 }
 
 void MainWindow::updateExpense()
 {
-    if (totalExpense < 0)
-    {
-        totalExpense = 0;
-    }
     ui->labelTotalExpense->setText("Total Expenses: ₱" + QString::number(totalExpense, 'f', 2));
 }
 
@@ -914,6 +902,16 @@ void MainWindow::editItem(QListWidgetItem *item, int x)
         edit.setModal(this);
         edit.setTransaction(transaction);
         edit.exec();
+
+        if (transaction->getType() == "expense")
+        {
+            balance -= transaction->getAmount();
+            totalExpense += transaction->getAmount();
+        } else if (transaction->getType() == "income")
+        {
+            balance += transaction->getAmount();
+            totalIncome += transaction->getAmount();
+        }
         }
     else {
         QMessageBox::information(this, "Error", "Transaction not found in the list.");

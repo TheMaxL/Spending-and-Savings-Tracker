@@ -21,6 +21,26 @@ public:
     QString getDescription() const { return description; }
     QString getType() const { return type; }
 
+    void setDate(const QDate& newDate) {
+        date = newDate;
+    }
+
+    void setCategory(const QString& newCategory) {
+        category = newCategory;
+    }
+
+    void setAmount(double newAmount) {
+        amount = newAmount;
+    }
+
+    void setDescription(const QString& newDescription) {
+        description = newDescription;
+    }
+
+    void setType(const QString& newType) {
+        type = newType;
+    }
+
     bool operator==(const Transaction& other) const {
         return date == other.date && category == other.category &&
                amount == other.amount && description == other.description &&

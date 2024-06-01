@@ -97,7 +97,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
    </property>
    <property name="dateTime">
     <datetime>
-     <hour>0</hour>
+     <hour>16</hour>
      <minute>0</minute>
      <second>0</second>
      <year>2024</year>
@@ -107,7 +107,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
    </property>
    <property name="maximumDateTime">
     <datetime>
-     <hour>15</hour>
+     <hour>7</hour>
      <minute>59</minute>
      <second>59</second>
      <year>2034</year>
@@ -117,12 +117,12 @@ li.checked::marker { content: &quot;\2612&quot;; }
    </property>
    <property name="minimumDateTime">
     <datetime>
-     <hour>0</hour>
+     <hour>16</hour>
      <minute>0</minute>
      <second>0</second>
      <year>2013</year>
      <month>12</month>
-     <day>28</day>
+     <day>27</day>
     </datetime>
    </property>
    <property name="calendarPopup">
