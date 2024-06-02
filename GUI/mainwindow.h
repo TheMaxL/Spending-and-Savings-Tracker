@@ -66,6 +66,7 @@ private slots:
     void deleteItem(QListWidgetItem *item, int x);
     void on_monthlyList_itemDoubleClicked(QListWidgetItem *item);
     void on_dailyList_itemDoubleClicked(QListWidgetItem *item);
+    void on_ConfirmGoal_Clicked();
 
 private:
     Ui::MainWindow *ui;
