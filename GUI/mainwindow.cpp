@@ -697,6 +697,7 @@ void MainWindow::on_monthComboBox_2_currentIndexChanged(int index)
 void MainWindow::printMonthly()
 {
     ui->monthlyList->clear();  // Clear the list widget before adding new items
+    monthlyListMapping.clear();
 
     Node<Transaction>* current = transactions.head;
     while (current) {
@@ -721,6 +722,8 @@ void MainWindow::printMonthly()
             QListWidgetItem *item = new QListWidgetItem();
             ui->monthlyList->addItem(item);
             ui->monthlyList->setItemWidget(item, label);
+
+            monthlyListMapping[item] = &current->data;
         }
         current = current->next;
     }
@@ -769,6 +772,7 @@ void MainWindow::updateDaySpinBoxRange(int index)
 void MainWindow::printDaily()
 {
     ui->dailyList->clear();  // Clear the list widget before adding new items
+    dailyListMapping.clear();
 
     Node<Transaction>* current = transactions.head;
     while (current) {
@@ -793,6 +797,8 @@ void MainWindow::printDaily()
             QListWidgetItem *item = new QListWidgetItem();
             ui->dailyList->addItem(item);
             ui->dailyList->setItemWidget(item, label);
+
+            dailyListMapping[item] = &current->data;
         }
         current = current->next;
     }
@@ -1027,15 +1033,16 @@ void MainWindow::editItem(QListWidgetItem *item, int x)
 
 void MainWindow::deleteItem(QListWidgetItem *item, int x)
 {
+    Transaction* transaction = nullptr;
     int row;
     if (x == 1)
     {
-        row = ui->monthlyList->row(item);
+        transaction = monthlyListMapping.value(item, nullptr);
     } else if (x == 2)
     {
-        row = ui->dailyList->row(item);
+        transaction = dailyListMapping.value(item, nullptr);
     }
-    Transaction* transaction = transactions.at(row);  // Retrieve the transaction pointer
+
     if (transaction) {
         QString type = transaction->getType();
         double amount = transaction->getAmount();

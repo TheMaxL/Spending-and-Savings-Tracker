@@ -9,6 +9,10 @@
 #include <QtGui>
 #include <QtWidgets>
 #include <QtCharts>
+#include <QMenu>
+#include <QCursor>
+#include <QMap>
+#include <QListWidgetItem>
 #include "transaction.h"
 #include "linkedlist.h"
 
@@ -76,7 +80,8 @@ private:
     double averageBalance;
     QMap<QDate, double> dailyBalances;
     QMap<QString, CategoryStats> CategoryStats;
-
+    QMap<QListWidgetItem*, Transaction*> monthlyListMapping;
+    QMap<QListWidgetItem*, Transaction*> dailyListMapping;
 
     void updateBalance();
     void updateIncome();
