@@ -2022,6 +2022,114 @@
 			"value" : "ON"
 		},
 		{
+			"name" : "QT_FEATURE_charts_area_chart",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: charts_area_chart (from target Qt6::Charts)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ON"
+		},
+		{
+			"name" : "QT_FEATURE_charts_bar_chart",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: charts_bar_chart (from target Qt6::Charts)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ON"
+		},
+		{
+			"name" : "QT_FEATURE_charts_boxplot_chart",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: charts_boxplot_chart (from target Qt6::Charts)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ON"
+		},
+		{
+			"name" : "QT_FEATURE_charts_candlestick_chart",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: charts_candlestick_chart (from target Qt6::Charts)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ON"
+		},
+		{
+			"name" : "QT_FEATURE_charts_datetime_axis",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: charts_datetime_axis (from target Qt6::Charts)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ON"
+		},
+		{
+			"name" : "QT_FEATURE_charts_line_chart",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: charts_line_chart (from target Qt6::Charts)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ON"
+		},
+		{
+			"name" : "QT_FEATURE_charts_pie_chart",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: charts_pie_chart (from target Qt6::Charts)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ON"
+		},
+		{
+			"name" : "QT_FEATURE_charts_scatter_chart",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: charts_scatter_chart (from target Qt6::Charts)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ON"
+		},
+		{
+			"name" : "QT_FEATURE_charts_spline_chart",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Qt feature: charts_spline_chart (from target Qt6::Charts)"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "ON"
+		},
+		{
 			"name" : "QT_FEATURE_checkbox",
 			"properties" : 
 			[
@@ -6018,6 +6126,18 @@
 			"value" : "C:/Qt/6.7.1/mingw_64/bin/qmake.exe"
 		},
 		{
+			"name" : "Qt6Charts_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for Qt6Charts."
+				}
+			],
+			"type" : "PATH",
+			"value" : "C:/Qt/6.7.1/mingw_64/lib/cmake/Qt6Charts"
+		},
+		{
 			"name" : "Qt6CoreTools_DIR",
 			"properties" : 
 			[
@@ -6076,6 +6196,30 @@
 			],
 			"type" : "PATH",
 			"value" : "C:/Qt/6.7.1/mingw_64/lib/cmake/Qt6Gui"
+		},
+		{
+			"name" : "Qt6OpenGLWidgets_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for Qt6OpenGLWidgets."
+				}
+			],
+			"type" : "PATH",
+			"value" : "C:/Qt/6.7.1/mingw_64/lib/cmake/Qt6OpenGLWidgets"
+		},
+		{
+			"name" : "Qt6OpenGL_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for Qt6OpenGL."
+				}
+			],
+			"type" : "PATH",
+			"value" : "C:/Qt/6.7.1/mingw_64/lib/cmake/Qt6OpenGL"
 		},
 		{
 			"name" : "Qt6WidgetsTools_DIR",
