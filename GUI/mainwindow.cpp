@@ -16,7 +16,14 @@
 #include <cmath>
 #include <QtCharts/QValueAxis>
 #include <algorithm>
-
+#include <QBrush>
+#include <QColor>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QString>
+#include <QMenu>
+#include <QCursor>
+#include <QLabel>
 
 QT_USE_NAMESPACE
 
@@ -56,6 +63,19 @@ MainWindow::~MainWindow()
     saveTransactionsToFile("transactions.txt");
     delete ui;
 }
+
+class CustomListWidgetItem : public QWidget {
+public:
+    CustomListWidgetItem(const QString &htmlText, QWidget *parent = nullptr)
+        : QWidget(parent) {
+        QLabel *label = new QLabel(this);
+        label->setTextFormat(Qt::RichText);
+        label->setText(htmlText);
+        QVBoxLayout *layout = new QVBoxLayout(this);
+        layout->addWidget(label);
+        setLayout(layout);
+    }
+};
 
 MainWindow::AbnormalityLevel MainWindow::getAbnormalityLevel(double amount, double mean, double stdDev) {
     if (stdDev == 0.0) {
@@ -332,6 +352,11 @@ void MainWindow::on_resetButton_clicked()
         updateAverageBalance();
         ui->label_14->setText("Daily Balance: 0.00");
     }
+    ui->label_19->setText("Mean: 0.00");
+    ui->label_20->setText("Variance: 0.00");
+    ui->label_21->setText("Standard Deviation: 0.00");
+
+    ui->graphicsView->setScene(nullptr);
 }
 
 void MainWindow::resetData(const QString& filename)
@@ -670,27 +695,37 @@ void MainWindow::on_monthComboBox_2_currentIndexChanged(int index)
 
 void MainWindow::printMonthly()
 {
-    ui->monthlyList->clear();
+    ui->monthlyList->clear();  // Clear the list widget before adding new items
 
     Node<Transaction>* current = transactions.head;
     while (current) {
         QDate transactionDate = current->data.getDate();
-        if (transactionDate.year() == year && transactionDate.month() == month) {
-            // This transaction matches the chosen month and year, add it to the list widget
-            QString transactionInfo = QString("%1 - %2: ₱%3")
+        if (transactionDate.month() == month && transactionDate.year() == year) {
+            QString amountText = QString("₱%1").arg(current->data.getAmount());
+            QString color = (current->data.getType() == "expense") ? "red" : (current->data.getType() == "income") ? "green" : "black";
+            QString transactionInfo = QString("%1 - %2: <span style='color:%3;'>%4</span>")
                                           .arg(transactionDate.toString("yyyy-MM-dd"))
                                           .arg(current->data.getCategory())
-                                          .arg(current->data.getAmount());
+                                          .arg(color)
+                                          .arg(amountText);
 
             if (!current->data.getDescription().isEmpty()) {
                 transactionInfo.append("    (" + current->data.getDescription() + ")");
             }
 
-            QListWidgetItem *item = new QListWidgetItem(transactionInfo);
+            QLabel *label = new QLabel();
+            label->setTextFormat(Qt::RichText);
+            label->setText(transactionInfo);
+
+            QListWidgetItem *item = new QListWidgetItem();
             ui->monthlyList->addItem(item);
+            ui->monthlyList->setItemWidget(item, label);
         }
         current = current->next;
     }
+
+    // Apply the stylesheet for the QListWidget
+    ui->dailyList->setStyleSheet("QListWidget::item:selected { background: transparent; }");
 }
 
 void MainWindow::updateMonthly()
@@ -738,22 +773,34 @@ void MainWindow::printDaily()
     while (current) {
         QDate transactionDate = current->data.getDate();
         if (transactionDate.month() == monthDaily && transactionDate.day() == day && transactionDate.year() == year) {
-            QString transactionInfo = QString("%1 - %2: ₱%3")
+            QString amountText = QString("₱%1").arg(current->data.getAmount());
+            QString color = (current->data.getType() == "expense") ? "red" : (current->data.getType() == "income") ? "green" : "black";
+            QString transactionInfo = QString("%1 - %2: <span style='color:%3;'>%4</span>")
                                           .arg(transactionDate.toString("yyyy-MM-dd"))
                                           .arg(current->data.getCategory())
-                                          .arg(current->data.getAmount());
+                                          .arg(color)
+                                          .arg(amountText);
 
             if (!current->data.getDescription().isEmpty()) {
                 transactionInfo.append("    (" + current->data.getDescription() + ")");
             }
 
+            QLabel *label = new QLabel();
+            label->setTextFormat(Qt::RichText);
+            label->setText(transactionInfo);
 
-            QListWidgetItem *item = new QListWidgetItem(transactionInfo);
+            QListWidgetItem *item = new QListWidgetItem();
             ui->dailyList->addItem(item);
+            ui->dailyList->setItemWidget(item, label);
         }
         current = current->next;
     }
+
+    // Apply the stylesheet for the QListWidget
+    ui->dailyList->setStyleSheet("QListWidget::item:selected { background: transparent; }");
 }
+
+
 // Function to calculate mean
 double calculateMean(const QList<double>& data) {
     double sum = 0.0;
@@ -971,7 +1018,7 @@ void MainWindow::editItem(QListWidgetItem *item, int x)
             balance += transaction->getAmount();
             totalIncome += transaction->getAmount();
         }
-        }
+    }
     else {
         QMessageBox::information(this, "Error", "Transaction not found in the list.");
     }
@@ -1064,7 +1111,8 @@ void MainWindow::editOrDelete(QListWidgetItem *item, int x)
     QMenu contextMenu(tr("Context Menu"), this);
 
     // Apply stylesheet to the QMenu to add hover effect
-    contextMenu.setStyleSheet("QMenu::item:hover { background-color: rgba(30, 144, 255, 100); }");
+    contextMenu.setStyleSheet("QMenu::item { color: black; background-color: transparent; }"
+                              "QMenu::item:selected { background-color: lightgray; color: black; }");
 
     // Add actions to the context menu
     QAction editAction("Edit", this);
@@ -1085,5 +1133,5 @@ void MainWindow::editOrDelete(QListWidgetItem *item, int x)
     {
         contextMenu.exec(ui->dailyList->mapToGlobal(pos));
     }
-    }
+}
 
