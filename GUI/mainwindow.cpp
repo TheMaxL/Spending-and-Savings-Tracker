@@ -176,11 +176,17 @@ void MainWindow::updateBalance()
 
 void MainWindow::updateIncome()
 {
+    if (totalIncome < 0) {
+        totalIncome = 0;
+    }
     ui->labelTotalIncome->setText("Total Income: ₱" + QString::number(totalIncome, 'f', 2));
 }
 
 void MainWindow::updateExpense()
 {
+    if (totalExpense < 0) {
+        totalExpense = 0;
+    }
     ui->labelTotalExpense->setText("Total Expenses: ₱" + QString::number(totalExpense, 'f', 2));
 }
 
