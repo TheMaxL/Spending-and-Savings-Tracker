@@ -33,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->monthComboBox_3, QOverload<int>::of(&QComboBox::currentIndexChanged),
     this, &MainWindow::updateDaySpinBoxRange);
     connect(ui->pushButton_7, &QPushButton::clicked, this, &MainWindow::on_pushButton_7_clicked);
+    connect(ui->Confirm_Goal, &QPushButton::clicked, this, &MainWindow::on_ConfirmGoal_Clicked);
 
     ui->resetButton->setStyleSheet("color: red;");
     ui->clearExpenses->setStyleSheet("color: red;");
@@ -406,9 +407,6 @@ void MainWindow::updateAverageBalance()
 
     // Update the label with the average balance
     ui->label_15->setText("Average Balance: " + QString::number(averageBalance, 'f', 2));
-
-    // Debug information
-    qDebug() << "updateAverageBalance called. Total Balance:" << totalBalance << "Days:" << days << "Average Balance:" << averageBalance;
 }
 
 
@@ -1008,6 +1006,31 @@ void MainWindow::deleteItem(QListWidgetItem *item, int x)
         QMessageBox::information(this, "Error", "Invalid transaction index.");
     }
 }
+
+void MainWindow::on_ConfirmGoal_Clicked()
+{
+    // Retrieve the savings goal from the textEdit_3
+    bool ok;
+    double goal = ui->textEdit_3->toPlainText().toDouble(&ok);
+    if (!ok || goal <= 0) {
+        QMessageBox::warning(this, "Invalid Input", "Please enter a valid positive number.");
+        return;
+    }
+
+    // Retrieve the average daily balance from the label_15
+    double averageDailyBalance = ui->label_15->text().split(" ").last().toDouble(&ok);
+    if (!ok || averageDailyBalance <= 0) {
+        QMessageBox::warning(this, "Invalid Average Daily Balance", "Average daily balance must be a positive number.");
+        return;
+    }
+
+    // Calculate the number of days needed to reach the savings goal
+    double daysNeeded = goal / averageDailyBalance;
+
+    // Display the result in the Savingdays label
+    ui->Savingdays->setText(QString::number(ceil(daysNeeded)));
+}
+
 
 void MainWindow::on_monthlyList_itemDoubleClicked(QListWidgetItem *item)
 {
