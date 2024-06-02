@@ -320,7 +320,6 @@ void MainWindow::on_clearExpenses_clicked()
     if (reply == QMessageBox::Yes) {
         // User confirmed to clear expenses data
         totalExpense = 0.0;
-        // You may want to clear transactions as well if needed: transactions.clear();
         // Update UI after clearing expenses
         updateExpense();
         QMessageBox::information(this, "Data Cleared", "Expense data cleared successfully.");
@@ -485,18 +484,18 @@ void MainWindow::createPieChartIncome()
     // Add dummy data points if total is 0
     if (total <= 0.0)
     {
-        series->append("Salary", 1); // Add a small value for display
-        series->append("Allowance", 1); // Add a small value for display
-        series->append("Bonus", 1); // Add a small value for display
-        series->append("Other", 1); // Add a small value for display
+        series->append("Salary", 1);
+        series->append("Allowance", 1);
+        series->append("Bonus", 1);
+        series->append("Other", 1);
     }
     else
     {
         // Add actual data points
-        series->append("Salary", salary / total); // Convert to percentage
-        series->append("Allowance", allowance / total); // Convert to percentage
-        series->append("Bonus", bonus / total); // Convert to percentage
-        series->append("Other", other / total); // Convert to percentage
+        series->append("Salary", salary / total);
+        series->append("Allowance", allowance / total);
+        series->append("Bonus", bonus / total);
+        series->append("Other", other / total);
     }
 
     // Custom colors for the slices (different shades of green)
@@ -539,7 +538,6 @@ void MainWindow::createPieChartIncome()
         }
     }
 
-
     QChartView *chartview = new QChartView(chart);
     chartview->setRenderHint(QPainter::Antialiasing);
 
@@ -560,9 +558,6 @@ void MainWindow::createPieChartIncome()
     layout->addWidget(chartview);
     ui->PieChartIncome->setLayout(layout);
 }
-
-
-
 
 void MainWindow::createPieChartExpense()
 {
@@ -604,7 +599,7 @@ void MainWindow::createPieChartExpense()
                 other += current->data.getAmount();
             }
         }
-        current = current->next; // Move to the next node
+        current = current->next;
     }
 
     QPieSeries *series = new QPieSeries();
