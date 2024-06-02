@@ -992,15 +992,14 @@ void MainWindow::on_tabWidget_2_currentChanged(int index)
 
 void MainWindow::editItem(QListWidgetItem *item, int x)
 {
-    int row;
+    Transaction* transaction = nullptr;
     if (x == 1)
     {
-        row = ui->monthlyList->row(item);
+        transaction = monthlyListMapping.value(item, nullptr);
     } else if (x == 2)
     {
-        row = ui->dailyList->row(item);
+        transaction = dailyListMapping.value(item, nullptr);
     }
-    Transaction* transaction = transactions.at(row);  // Retrieve the transaction pointer
     if (transaction) {
         if (transaction->getType() == "expense")
         {
@@ -1034,7 +1033,6 @@ void MainWindow::editItem(QListWidgetItem *item, int x)
 void MainWindow::deleteItem(QListWidgetItem *item, int x)
 {
     Transaction* transaction = nullptr;
-    int row;
     if (x == 1)
     {
         transaction = monthlyListMapping.value(item, nullptr);

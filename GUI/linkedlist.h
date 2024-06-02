@@ -72,19 +72,6 @@ public:
         return false;
     }
 
-    T* at(int index) const {
-        Node<T>* current = head;
-        int count = 0;
-
-        while (current != nullptr) {
-            if (count == index) {
-                return &(current->data);
-            }
-            count++;
-            current = current->next;
-        }
-        return nullptr;  // Index out of bounds
-    }
 
 };
 
