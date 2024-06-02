@@ -871,7 +871,7 @@ void MainWindow::on_pushButton_7_clicked() {
 
     CategoryStats[category] = stats;
 
-    ui->label_19->setText("Mean Balance: ₱" + QString::number(mean, 'f', 2));
+    ui->label_19->setText("Mean Expense: ₱" + QString::number(mean, 'f', 2));
     ui->label_20->setText("Variance: ₱" + QString::number(variance, 'f', 2));
     ui->label_21->setText("Standard Deviation: ₱" + QString::number(stdDev, 'f', 2));
 
