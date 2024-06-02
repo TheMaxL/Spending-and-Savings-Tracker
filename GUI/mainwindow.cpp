@@ -912,7 +912,7 @@ void MainWindow::editItem(QListWidgetItem *item, int x)
             balance += transaction->getAmount();
             totalIncome += transaction->getAmount();
         }
-        }
+    }
     else {
         QMessageBox::information(this, "Error", "Transaction not found in the list.");
     }
