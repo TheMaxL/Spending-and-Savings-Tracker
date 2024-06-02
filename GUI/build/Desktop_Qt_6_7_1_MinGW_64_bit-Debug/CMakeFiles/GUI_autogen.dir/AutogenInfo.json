@@ -288,6 +288,12 @@
 	"HEADERS" : 
 	[
 		[
+			"C:/Users/lennon/Spending-and-Savings-Tracker/GUI/editdialog.h",
+			"MU",
+			"EWIEGA46WW/moc_editdialog.cpp",
+			null
+		],
+		[
 			"C:/Users/lennon/Spending-and-Savings-Tracker/GUI/linkedlist.h",
 			"MU",
 			"EWIEGA46WW/moc_linkedlist.cpp",
@@ -383,6 +389,11 @@
 	"SETTINGS_FILE" : "C:/Users/lennon/Spending-and-Savings-Tracker/GUI/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/CMakeFiles/GUI_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[
+			"C:/Users/lennon/Spending-and-Savings-Tracker/GUI/editdialog.cpp",
+			"MU",
+			null
+		],
 		[
 			"C:/Users/lennon/Spending-and-Savings-Tracker/GUI/main.cpp",
 			"MU",

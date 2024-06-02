@@ -14,6 +14,8 @@
 #include <QDate>
 #include <QDebug>
 #include <cmath>
+#include <QtCharts/QValueAxis>
+#include <algorithm>
 
 
 QT_USE_NAMESPACE
@@ -776,6 +778,11 @@ double calculateVariance(const QList<double>& data, double mean) {
 double calculateStandardDeviation(double variance) {
     return std::sqrt(variance);
 }
+double normalDistribution(double x, double mean, double stdDev) {
+    double exponent = -pow((x - mean) / stdDev, 2) / 2;
+    double coefficient = 1 / (stdDev * sqrt(2 * M_PI));
+    return coefficient * exp(exponent);
+}
 
 void MainWindow::on_pushButton_7_clicked() {
     QDate startDate = ui->dateEdit_7->date();
@@ -816,7 +823,61 @@ void MainWindow::on_pushButton_7_clicked() {
     ui->label_19->setText("Mean Balance: ₱" + QString::number(mean, 'f', 2));
     ui->label_20->setText("Variance: ₱" + QString::number(variance, 'f', 2));
     ui->label_21->setText("Standard Deviation: ₱" + QString::number(stdDev, 'f', 2));
+
+    // Create a normal distribution graph
+    QChart *chart = new QChart();
+    chart->setTitle("Normal Distribution Graph");
+
+    // Create a line series for the normal distribution curve
+    QLineSeries *series = new QLineSeries();
+    series->setName("Normal Distribution");
+
+    // Generate x-values for the normal distribution curve
+    int numPoints = 1000; // Increase the number of points for a smoother curve
+    double xMin = mean - 4 * stdDev; // Extend the range to -4 and +4 standard deviations
+    double xMax = mean + 4 * stdDev;
+    double xStep = (xMax - xMin) / (numPoints - 1);
+
+    for (int i = 0; i < numPoints; ++i) {
+        double x = xMin + i * xStep;
+        double y = normalDistribution(x, mean, stdDev);
+        series->append(x, y);
+    }
+
+    // Add the series to the chart
+    chart->addSeries(series);
+
+    // Create axes
+    QValueAxis *axisX = new QValueAxis();
+    axisX->setRange(xMin, xMax);
+    axisX->setTitleText("Amount");
+
+    QValueAxis *axisY = new QValueAxis();
+    axisY->setRange(0, normalDistribution(mean, mean, stdDev)); // Use the peak of the bell curve
+    axisY->setTitleText("Probability Density");
+
+    // Add axes to the chart
+    chart->addAxis(axisX, Qt::AlignBottom);
+    chart->addAxis(axisY, Qt::AlignLeft);
+    series->attachAxis(axisX);
+    series->attachAxis(axisY);
+
+    // Create a QChartView
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+
+    // Create a scene and add the chart view to it
+    QGraphicsScene *scene = new QGraphicsScene();
+    QGraphicsProxyWidget *proxy = scene->addWidget(chartView);
+
+    // Set the scene to the graphics view
+    ui->graphicsView->setScene(scene);
+
+    // Resize the chartView to match the size of graphicsView
+    chartView->resize(ui->graphicsView->size());
+    ui->graphicsView->fitInView(proxy->boundingRect(), Qt::KeepAspectRatio);
 }
+
 void MainWindow::updateDaily()
 {
     double dailyExpense = 0.0, dailyIncome = 0.0, dailyBalance = 0.0;

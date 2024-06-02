@@ -518,6 +518,7 @@ GUI_autogen/timestamp: \
   C:/Qt/6.7.1/mingw_64/include/QtOpenGLWidgets/qtopenglwidgetsglobal.h \
   C:/Qt/6.7.1/mingw_64/include/QtOpenGLWidgets/qtopenglwidgetsversion.h \
   C:/Qt/6.7.1/mingw_64/include/QtWidgets/QCommonStyle \
+  C:/Qt/6.7.1/mingw_64/include/QtWidgets/QDialog \
   C:/Qt/6.7.1/mingw_64/include/QtWidgets/QGraphicsView \
   C:/Qt/6.7.1/mingw_64/include/QtWidgets/QGraphicsWidget \
   C:/Qt/6.7.1/mingw_64/include/QtWidgets/QLabel \
@@ -1174,6 +1175,9 @@ GUI_autogen/timestamp: \
   CMakeFiles/3.27.7/CMakeRCCompiler.cmake \
   CMakeFiles/3.27.7/CMakeSystem.cmake \
   GUI_autogen/moc_predefs.h \
+  C:/Users/lennon/Spending-and-Savings-Tracker/GUI/editdialog.cpp \
+  C:/Users/lennon/Spending-and-Savings-Tracker/GUI/editdialog.h \
+  C:/Users/lennon/Spending-and-Savings-Tracker/GUI/editdialog.ui \
   C:/Users/lennon/Spending-and-Savings-Tracker/GUI/linkedlist.h \
   C:/Users/lennon/Spending-and-Savings-Tracker/GUI/main.cpp \
   C:/Users/lennon/Spending-and-Savings-Tracker/GUI/mainwindow.cpp \
